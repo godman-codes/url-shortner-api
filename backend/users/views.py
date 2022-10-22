@@ -11,6 +11,7 @@ class RegisterUserView(CreateAPIView):
 
 class RetrieveUserView(RetrieveAPIView):
     def get(self, request, format=None):
+        print(request.user)
         user = request.user
         user = UserSerializer(user)
         return Response(

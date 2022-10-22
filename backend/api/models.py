@@ -2,10 +2,18 @@ from django.db import models
 from random import choices
 from string import ascii_letters
 from django.conf import settings
+from users.models import UserAccount
 
 class UrlsShortener(models.Model):
     original_link = models.URLField()
     short_link = models.URLField()
+    owner = models.ForeignKey( UserAccount, on_delete=models.CASCADE, null=True, blank=True,)
+    visited = models.IntegerField(default=0)
+
+    def increase_visit_count(self):
+        self.visited = self.visited + 1
+        self.save()
+        return
 
     def shortener(self):
         while True:

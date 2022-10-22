@@ -6,4 +6,19 @@ class UrlSerializers(serializers.ModelSerializer):
     
     class Meta:
         model = UrlsShortener
-        fields = '__all__'        
+        fields = [
+            'id',
+            'short_link',
+            'original_link',
+        ]
+
+class UrlSerializersDetails(UrlSerializers):
+    visited = serializers.IntegerField(read_only=True)
+    class Meta:
+        model = UrlsShortener
+        fields = [
+            'id',
+            'short_link',
+            'original_link',
+            'visited',
+        ]
