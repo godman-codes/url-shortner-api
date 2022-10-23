@@ -10,6 +10,7 @@ class RegisterUserView(CreateAPIView):
     serializer_class = UserSerializer
 
 class RetrieveUserView(RetrieveAPIView):
+    serializer_class = UserSerializer
     def get(self, request, format=None):
         print(request.user)
         user = request.user

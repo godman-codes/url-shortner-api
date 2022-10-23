@@ -45,7 +45,7 @@ class ShortenerDetailView(RetrieveAPIView):
     serializer_class = UrlSerializersDetails
 
     def get_queryset(self):
-        return UrlsShortener.objects.filter(owner=self.request.user).all()
+        return UrlsShortener.objects.filter(owner=self.request.user.id).all()
 
 
 class ShortenerDestroyView(DestroyAPIView):
@@ -53,11 +53,11 @@ class ShortenerDestroyView(DestroyAPIView):
     serializer_class = UrlSerializersDetails
 
     def get_queryset(self):
-        return UrlsShortener.objects.filter(owner=self.request.user).all()
+        return UrlsShortener.objects.filter(owner=self.request.user.id).all()
 
 class shortenerUpdateView(UpdateAPIView):
     queryset = UrlsShortener.objects.all()
     serializer_class = UrlSerializers
 
     def get_queryset(self):
-        return UrlsShortener.objects.filter(owner=self.request.user).all()
+        return UrlsShortener.objects.filter(owner=self.request.user.id).all()
