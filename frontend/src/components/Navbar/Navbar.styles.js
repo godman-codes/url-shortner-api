@@ -9,7 +9,8 @@ export const Wrapper = styled.div`
    overflow: hidden;
    display: block;
    z-index: 100;
-   background-color: white;
+   color: var(--white);
+   font-family: "Josefin Sans";
 `;
 export const InnerWrapper = styled.div`
    display: flex;
@@ -20,8 +21,8 @@ export const Content = styled.div`
    display: flex;
    justify-content: space-between;
    width: 60%;
-   font-weight: bolder;
-   font-size: larger;
+   font-weight: 600;
+   font-size: 18px;
    #logo {
       width: 140px;
       margin: 0;
@@ -66,9 +67,9 @@ export const Content = styled.div`
    @media screen and (max-width: 1400px) {
       width: 85%;
    }
-   @media screen and (max-width: 1000px) {
+   @media screen and (max-width: 991px) and (max-width: 1199px) {
       width: 95%;
-      font-weight: bold;
-      font-size: large;
+      font-weight: 500;
+      font-size: 14px;
    }
 `;
