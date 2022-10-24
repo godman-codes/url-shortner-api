@@ -7,7 +7,7 @@ const NavBar = () => {
          <InnerWrapper>
             <Content>
                <div id="logo">
-                  <p>Logo and name</p>
+                  <p>Logo</p>
                </div>
                <ul id="menu">
                   <li>

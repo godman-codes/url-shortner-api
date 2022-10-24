@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-
 export const GlobalStyle = createGlobalStyle`
 :root {
     --white: #ffffff;
@@ -11,10 +10,10 @@ export const GlobalStyle = createGlobalStyle`
 
 * {
     box-sizing: border-box;
-    font-family: var(--second_font)
+    font-family: var(--second_font);
 }
 body {
     margin: 0px;
-    /* padding: 0% 15%; */
+
 }
 `;

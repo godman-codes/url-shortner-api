@@ -3,6 +3,13 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
    padding: 15px 0;
    height: 91px;
+   position: fixed;
+   right: 0;
+   left: 0;
+   overflow: hidden;
+   display: block;
+   z-index: 100;
+   background-color: white;
 `;
 export const InnerWrapper = styled.div`
    display: flex;
@@ -13,6 +20,8 @@ export const Content = styled.div`
    display: flex;
    justify-content: space-between;
    width: 60%;
+   font-weight: bolder;
+   font-size: larger;
    #logo {
       width: 140px;
       margin: 0;
@@ -23,7 +32,7 @@ export const Content = styled.div`
       }
    }
    #menu {
-      margin-right: 30px !important;
+      margin-right: 35px !important;
       margin-left: auto !important;
       width: 35%;
       list-style: none;
@@ -32,7 +41,6 @@ export const Content = styled.div`
       margin: 0;
       justify-content: space-between;
       align-items: center;
-      font-weight: bolder;
       li {
          display: list-item;
          /* position: relative; */
@@ -41,15 +49,12 @@ export const Content = styled.div`
          width: auto;
          p {
             margin: 0;
-            font-size: larger;
          }
       }
    }
    #auth {
       width: 25%;
       display: flex;
-      font-size: larger;
-      font-weight: bolder;
       /* justify-content: center; */
       p {
          display: flex;
@@ -61,7 +66,9 @@ export const Content = styled.div`
    @media screen and (max-width: 1400px) {
       width: 85%;
    }
-   @media screen and (max-width: 1400px) {
+   @media screen and (max-width: 1000px) {
       width: 95%;
+      font-weight: bold;
+      font-size: large;
    }
 `;
