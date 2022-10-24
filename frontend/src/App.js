@@ -4,6 +4,7 @@ import Layout from "./hocs/Layout";
 import { Provider } from "react-redux";
 import store from "./store";
 import Home from "./container/Home";
+import { GlobalStyle } from "./GlobalStyles";
 
 function App() {
    return (
@@ -14,6 +15,7 @@ function App() {
                   <Route exact path="/" element={<Home />} />
                </Routes>
             </Layout>
+            <GlobalStyle />
          </Router>
       </Provider>
    );
