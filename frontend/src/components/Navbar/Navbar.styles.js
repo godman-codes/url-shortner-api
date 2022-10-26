@@ -145,7 +145,7 @@ export const Content = styled.div`
          height: 120px;
          z-index: 9;
          background-color: white;
-         overflow-y: visible;
+         /* overflow-y: scroll; */
          color: var(--lightest_purple);
          font-weight: 500;
          font-size: 15px;

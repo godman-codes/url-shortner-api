@@ -7,7 +7,9 @@ const Home = () => {
       <>
          <NavBar />
          <BannerOne />
-         {/* <div style={{ paddingTop: "91px" }}>Home</div> */}
+         <div style={{ paddingTop: "91px", color: "white" }}>
+            <p>Home</p>
+         </div>
       </>
    );
 };
