@@ -4,6 +4,8 @@ import Layout from "./hocs/Layout";
 import { Provider } from "react-redux";
 import store from "./store";
 import Home from "./container/Home";
+import SignUp from "./container/SignUp";
+import Login from "./container/Login";
 import { GlobalStyle } from "./GlobalStyles";
 
 function App() {
@@ -13,6 +15,8 @@ function App() {
             <Layout>
                <Routes>
                   <Route exact path="/" element={<Home />} />
+                  <Route exact path="/login" element={<Login />} />
+                  <Route exact path="/signup" element={<SignUp />} />
                </Routes>
             </Layout>
             <GlobalStyle />

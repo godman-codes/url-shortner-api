@@ -12,7 +12,8 @@ export const Wrapper = styled.div`
    background-position: center center;
    overflow: hidden;
    z-index: -1;
-   bottom: 175px;
+   bottom: 140px;
+   height: 800px;
    div {
       position: absolute;
       left: 0;
