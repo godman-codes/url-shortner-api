@@ -6,9 +6,12 @@ export const GlobalStyle = createGlobalStyle`
 :root {
     --white: #ffffff;
     --purple: #414785;
+    --dark_purple: #120a36;
     --blue: #0073E4;
+    --nav_blue: #2c18b4
     --first_font: 'OpenSans', sans-serif;
     --second_font: 'JosefinSansRegular';
+    --lightest_purple: #565EB0;
     --button_color: rgb(236,76,119);
     --button_gradient: linear-gradient(180deg, rgba(236,76,119,1) 0%, rgba(254,122,106,1) 100%);
 }
