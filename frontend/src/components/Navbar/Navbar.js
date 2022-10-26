@@ -1,39 +1,54 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useReducer } from "react";
 import { Wrapper, Content, InnerWrapper } from "./Navbar.styles";
 import { Link } from "react-router-dom";
 
+const reducer = (state, action) => {
+   switch (action.type) {
+      case "toggleIcon":
+         if (state.icon === "menu-icon") {
+            return {
+               ...state,
+               icon: "menu-icon toggle",
+               navbarToggle: "darkColored",
+               expandMenu: "menu",
+               overlay: true,
+            };
+         } else {
+            return {
+               ...state,
+               icon: "menu-icon",
+               navbarToggle: "",
+               expandMenu: "menu active-menu",
+               overlay: false,
+            };
+         }
+      case "closeMenu":
+         return {
+            ...state,
+            icon: "menu-icon",
+            navbarToggle: "",
+            expandMenu: "menu active-menu",
+            overlay: false,
+         };
+      default:
+         break;
+   }
+};
+
 const NavBar = () => {
    const [navbar, setNavbar] = useState(false);
-   const [icon, setIcon] = useState("menu-icon");
-   const [navbarToggle, setNavbarToggle] = useState("");
-   const [expandMenu, setExpandMenu] = useState("menu active-menu");
-   const [overlay, setOverlay] = useState(false);
    const menuRef = useRef();
-
-   const navToggle = () => {
-      // Icon Toggler
-      if (icon === "menu-icon") {
-         setIcon("menu-icon toggle");
-         setNavbarToggle("darkColored");
-      } else {
-         setIcon("menu-icon");
-         setNavbarToggle("");
-      }
-      if (expandMenu === "menu active-menu") {
-         setExpandMenu("menu");
-         setOverlay(true);
-      } else {
-         setExpandMenu("menu active-menu");
-         setOverlay(false);
-      }
-   };
+   const [state, dispatch] = useReducer(reducer, {
+      icon: "menu-icon",
+      navbarToggle: "",
+      expandMenu: "menu active-menu",
+      overlay: false,
+   });
 
    useEffect(() => {
       const closeDropdown = (e) => {
          if (e.path[0] !== menuRef.current) {
-            setIcon("menu-icon");
-            setNavbarToggle("");
-            setExpandMenu("menu active-menu");
+            dispatch({ type: "closeMenu" });
          }
       };
       document.body.addEventListener("click", closeDropdown);
@@ -51,12 +66,15 @@ const NavBar = () => {
 
    return (
       <Wrapper>
-         <InnerWrapper id={navbar ? "colored" : ""} className={navbarToggle}>
+         <InnerWrapper
+            id={navbar ? "colored" : ""}
+            className={state.navbarToggle}
+         >
             <Content>
                <div id="logo">
                   <p>Logo</p>
                </div>
-               <ul className={expandMenu}>
+               <ul className={state.expandMenu}>
                   <li>
                      <Link to="/login">Home</Link>
                   </li>
@@ -67,7 +85,13 @@ const NavBar = () => {
                      <Link to="/login">Contact</Link>
                   </li>
                </ul>
-               <div ref={menuRef} className={icon} onClick={navToggle}>
+               <div
+                  ref={menuRef}
+                  className={state.icon}
+                  onClick={() => {
+                     dispatch({ type: "toggleIcon" });
+                  }}
+               >
                   <div className="line1"></div>
                   <div className="line2"></div>
                   <div className="line3"></div>
@@ -80,7 +104,9 @@ const NavBar = () => {
                      REGISTER
                   </Link>
                </div>
-               <div className={"overlay " + (overlay ? "active" : "")}></div>
+               <div
+                  className={"overlay " + (state.overlay ? "active" : "")}
+               ></div>
             </Content>
          </InnerWrapper>
       </Wrapper>
