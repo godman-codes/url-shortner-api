@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
    z-index: -1;
    bottom: 140px;
    height: 800px;
-   div {
+   .banner-bottom {
       position: absolute;
       left: 0;
       right: 0;
@@ -22,6 +22,32 @@ export const Wrapper = styled.div`
       bottom: -8px;
       img {
          width: 100%;
+      }
+   }
+   .rotate-1 {
+      position: absolute;
+      top: 32%;
+      right: calc(50% + 620px);
+      img {
+         animation: rotate2 15s alternate infinite;
+      }
+      @keyframes rotate2 {
+         100% {
+            transform: rotate(360deg);
+         }
+      }
+   }
+   .rotate-2 {
+      position: absolute;
+      top: 32%;
+      left: calc(50% + 620px);
+      img {
+         animation: rotate2 15s alternate infinite;
+      }
+      @keyframes rotate2 {
+         100% {
+            transform: rotate(360deg);
+         }
       }
    }
 `;
