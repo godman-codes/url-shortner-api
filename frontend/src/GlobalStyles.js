@@ -1,6 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 import JosefinSansBold from "./fonts/JosefinSans/JosefinSans-Bold.ttf";
 import JosefinSansRegular from "./fonts/JosefinSans/JosefinSans-Regular.ttf";
+import OpenSansRegular from "./fonts/OpenSans/OpenSans-Regular.ttf";
+import OpenSansBold from "./fonts/OpenSans/OpenSans-Bold.ttf";
 
 export const GlobalStyle = createGlobalStyle`
 :root {
@@ -8,7 +10,8 @@ export const GlobalStyle = createGlobalStyle`
     --purple: #414785;
     --dark_purple: #120a36;
     --blue: #0073E4;
-    --nav_blue: #2c18b4
+    --sky_blue: #00F7FF;
+    --nav_blue: #2c18b4;
     --first_font: 'OpenSans', sans-serif;
     --second_font: 'JosefinSansRegular';
     --lightest_purple: #565EB0;
@@ -20,8 +23,8 @@ export const GlobalStyle = createGlobalStyle`
 * {
     box-sizing: border-box;
     @font-face {
-        font-family: 'Josefin Sans';
-        src: local('Josefin Sans'), 
+        font-family: 'Josefin Sans Bold';
+        src: local('Josefin Sans Bold'), 
         url(${JosefinSansBold})
         /* format('opentype') */
     }
@@ -30,6 +33,16 @@ export const GlobalStyle = createGlobalStyle`
         src: local('Josefin Sans Regular'), 
         url(${JosefinSansRegular})
         /* format('opentype') */
+    }
+    @font-face {
+        font-family: 'Open Sans';
+        src: local('Open Sans')
+         url(${OpenSansRegular});
+    }
+    @font-face {
+        font-family: 'Open Sans Bold';
+        src: local('Open Sans Bold')
+         url(${OpenSansBold});
     }
 }
 body {
