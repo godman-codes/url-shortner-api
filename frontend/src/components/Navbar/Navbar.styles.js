@@ -12,16 +12,16 @@ export const Wrapper = styled.div`
    font-family: "Josefin Sans Regular";
    background-color: transparent;
    #colored {
-      background-color: #2c18b4;
+      background-color: var(--nav_blue);
       transition: background-color 200ms linear;
    }
    @media screen and (max-width: 966px) {
       height: 85px;
       #colored {
-         background-color: #414785;
+         background-color: var(--purple);
       }
       .darkColored {
-         background-color: #120a36;
+         background-color: var(--dark_purple);
       }
    }
 `;
@@ -57,6 +57,9 @@ export const Content = styled.div`
       margin: 0;
       justify-content: space-between;
       align-items: center;
+      .second-auth {
+         display: none;
+      }
       li {
          display: list-item;
          /* position: relative; */
@@ -109,10 +112,10 @@ export const Content = styled.div`
    }
    @media screen and (max-width: 966px) {
       width: 78%;
-      font-weight: 550;
-      font-size: 14px;
+      font-weight: 600;
+      font-size: 15px;
       #auth {
-         width: 30%;
+         width: 40%;
       }
       .active-menu {
          visibility: hidden;
@@ -134,6 +137,7 @@ export const Content = styled.div`
          position: fixed;
          display: flex;
          flex-direction: column;
+         margin: 0 !important;
          /* justify-content: flex-start; */
          top: 85px;
          left: 0;
@@ -142,7 +146,9 @@ export const Content = styled.div`
          z-index: 9;
          background-color: white;
          overflow-y: visible;
-         color: #414785;
+         color: var(--lightest_purple);
+         font-weight: 500;
+         font-size: 15px;
 
          li {
             width: 100%;
@@ -162,7 +168,7 @@ export const Content = styled.div`
                display: flex;
                align-items: center;
                height: 100%;
-               color: #414785;
+               color: var(--lightest_purple);
                font-size: larger;
                text-decoration: none;
                text-transform: capitalize;
@@ -175,8 +181,8 @@ export const Content = styled.div`
       flex-direction: column;
       /* align-items: center; */
       justify-content: center;
-      margin-right: 20px;
-      margin-left: auto;
+      /* margin-right: 20px; */
+      margin-left: 35%;
       height: 100%;
       div {
          width: 1.7rem;
@@ -215,5 +221,37 @@ export const Content = styled.div`
    .overlay.active {
       visibility: visible;
       opacity: 1;
+   }
+   @media screen and (max-width: 648px) {
+      width: 95%;
+      #auth {
+         display: none;
+      }
+      .menu-icon {
+         margin-right: 0;
+      }
+      .menu {
+         height: 250px;
+         .second-auth {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30%;
+            border-bottom: 0;
+            :hover {
+               background-color: var(--white);
+            }
+            a {
+               font-weight: 500;
+               font-size: 14px;
+               color: var(--white);
+               padding: 9px 45px 7px 45px;
+               height: 45px;
+               width: auto;
+               background: var(--button_gradient);
+               border-radius: 25px;
+            }
+         }
+      }
    }
 `;

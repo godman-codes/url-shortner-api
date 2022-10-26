@@ -84,6 +84,12 @@ const NavBar = () => {
                   <li>
                      <Link to="/login">Contact</Link>
                   </li>
+                  <li className="second-auth">
+                     <Link to="/login">Login</Link>
+                  </li>
+                  <li className="second-auth">
+                     <Link to="/signup">Register</Link>
+                  </li>
                </ul>
                <div
                   ref={menuRef}
