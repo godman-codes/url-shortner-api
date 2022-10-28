@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
       left: 0;
       right: 0;
       z-index: -2;
-      bottom: -8px;
+      bottom: -11px;
       img {
          width: 100%;
       }
@@ -28,26 +28,26 @@ export const Wrapper = styled.div`
       position: absolute;
       top: 32%;
       right: calc(50% + 620px);
-      img {
+      /* img {
          animation: rotate2 15s alternate infinite;
       }
       @keyframes rotate2 {
          100% {
             transform: rotate(360deg);
          }
-      }
+      } */
    }
    .rotate-2 {
       position: absolute;
       top: 32%;
       left: calc(50% + 620px);
-      img {
+      /* img {
          animation: rotate2 15s alternate infinite;
       }
       @keyframes rotate2 {
          100% {
             transform: rotate(360deg);
          }
-      }
+      } */
    }
 `;

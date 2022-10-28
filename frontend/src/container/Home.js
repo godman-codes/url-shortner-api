@@ -7,7 +7,6 @@ const Home = () => {
       <>
          <NavBar />
          <BannerOne />
-         <div style={{ paddingTop: "175px", color: "white" }}>home</div>
          <BannerContainer />
       </>
    );

@@ -106,7 +106,7 @@ export const Content = styled.div`
       }
    }
    @media screen and (max-width: 1400px) {
-      width: 90%;
+      width: 80%;
       font-weight: bold;
       font-size: 16px;
    }
