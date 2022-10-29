@@ -60,6 +60,15 @@ body {
     font-family: "Open Sans two";
     background: #ffffff;
 }
+p {
+    margin-top: -10px;
+}
+a {
+    display: inline-block;
+    -webkit-transition: all ease 0.3s;
+    -moz-transition: all ease 0.3s;
+    transition: all ease 0.3s;
+}
 h1,
 h2,
 h3,
@@ -150,6 +159,9 @@ p a:hover {
 textarea {
     resize: vertical;
 }
+img {
+    border-style: none;
+}
 
 @media (max-width: 575px) {
     p {
@@ -191,5 +203,8 @@ textarea {
         line-height: 26px;
         margin-top: -2px;
     }
+}
+audio, canvas, iframe, img, svg, video {
+    vertical-align: middle;
 }
 `;
