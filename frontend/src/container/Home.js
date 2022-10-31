@@ -4,6 +4,8 @@ import BannerOne from "../components/BannerOne";
 import BannerContainer from "../components/BannerContainer";
 import InformationSection from "../components/InformationSection";
 import FeaturesContainer from "../components/FeaturesContainer";
+import HowContainer from "../components/HowContainer";
+
 const Home = () => {
    return (
       <>
@@ -12,6 +14,7 @@ const Home = () => {
          <BannerContainer />
          <InformationSection />
          <FeaturesContainer />
+         <HowContainer />
       </>
    );
 };
