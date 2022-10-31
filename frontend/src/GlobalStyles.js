@@ -207,4 +207,8 @@ img {
 audio, canvas, iframe, img, svg, video {
     vertical-align: middle;
 }
+ul li {
+    list-style: none;
+    padding: 5px 0;
+}
 `;
