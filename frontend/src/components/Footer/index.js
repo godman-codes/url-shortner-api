@@ -1,6 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Wrapper, Content } from "./styles";
 import Wave from "../../images/wave.png";
+import Neteller from "../../images/neteller.png";
+import Paypal from "../../images/paypal.png";
+import skrill from "../../images/skrill.png";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+   faFacebook,
+   faGithub,
+   faTwitter,
+   faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
    return (
@@ -52,8 +64,61 @@ const Footer = () => {
                      messages
                   </label>
                </div>
-               <div className="form-group">
+               <div className="form-group text-center">
                   <button type="submit">Send Message</button>
+               </div>
+            </div>
+            <div className="footer-top">
+               <div className="logo">
+                  <Link to="/">Godman</Link>
+               </div>
+               <ul className="links">
+                  <li>
+                     <Link href="#0">
+                        <img src={Neteller} alt="Neteller" />
+                     </Link>
+                  </li>
+                  <li>
+                     <Link href="#0">
+                        <img src={skrill} alt="skrill" />
+                     </Link>
+                  </li>
+                  <li>
+                     <Link href="#0">
+                        <img src={Paypal} alt="Paypal" />
+                     </Link>
+                  </li>
+               </ul>
+            </div>
+            <div className="footer-bottom">
+               <div className="footer-bottom-area">
+                  <div className="left">
+                     <p>
+                        © Copyright 2020 |<Link to="#0">Godman</Link> By GODMAN
+                     </p>
+                  </div>
+                  <div className="social-icons">
+                     <li>
+                        <Link className="active" to="#0">
+                           <FontAwesomeIcon icon={faFacebook} />
+                        </Link>
+                     </li>
+                     <li>
+                        <Link to="#0">
+                           <FontAwesomeIcon icon={faGithub} />
+                        </Link>
+                     </li>
+                     <li>
+                        <Link to="#0">
+                           <FontAwesomeIcon icon={faInstagram} />
+                        </Link>
+                     </li>
+                     <li>
+                        <Link to="#0">
+                           <FontAwesomeIcon icon={faTwitter} />
+                        </Link>
+                     </li>
+                  </div>
                </div>
             </div>
          </Content>

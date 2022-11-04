@@ -139,11 +139,7 @@ export const Content = styled.div`
          }
          button {
             cursor: pointer;
-            background: -webkit-linear-gradient(
-               -100deg,
-               #2d38e1 0%,
-               #03c6fc 84%
-            );
+            background: var(--button_gradient_blue);
             box-shadow: -1.045px 9.945px 16px 0px rgb(29 47 112 / 30%);
             font-size: 16px;
             font-weight: 400;

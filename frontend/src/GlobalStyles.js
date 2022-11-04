@@ -19,6 +19,11 @@ export const GlobalStyle = createGlobalStyle`
     --second_font: 'JosefinSansRegular';
     --lightest_purple: #565EB0;
     --button_color: rgb(236,76,119);
+    --button_gradient_blue: -webkit-linear-gradient(
+               -100deg,
+               #2d38e1 0%,
+               #03c6fc 84%
+            );
     --button_gradient: linear-gradient(180deg, rgba(236,76,119,1) 0%, rgba(254,122,106,1) 100%);
     --rotator_animation: rotate2 20s alternate infinite;
 }
@@ -66,6 +71,7 @@ p {
     margin-top: -10px;
 }
 a {
+    text-decoration: none;
     display: inline-block;
     -webkit-transition: all ease 0.3s;
     -moz-transition: all ease 0.3s;

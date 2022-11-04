@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, useReducer } from "react";
 import { Wrapper, Content, InnerWrapper } from "./Navbar.styles";
 import { Link } from "react-router-dom";
+import Logo from "../../images/logo_transparent.png";
 
 const reducer = (state, action) => {
    switch (action.type) {
@@ -72,7 +73,9 @@ const NavBar = () => {
          >
             <Content>
                <div id="logo">
-                  <p>Logo</p>
+                  <Link to="/">
+                     <img src={Logo} alt="Logo" />
+                  </Link>
                </div>
                <ul className={state.expandMenu}>
                   <li>

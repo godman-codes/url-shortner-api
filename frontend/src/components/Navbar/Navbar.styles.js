@@ -43,8 +43,14 @@ export const Content = styled.div`
       margin: 0;
       display: flex;
       align-items: center;
-      p {
-         margin: 0;
+
+      a {
+         width: auto;
+         height: auto;
+         img {
+            width: 50px;
+            height: auto;
+         }
       }
    }
    .menu {
