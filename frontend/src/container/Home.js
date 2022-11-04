@@ -7,6 +7,7 @@ import FeaturesContainer from "../components/FeaturesContainer";
 import HowContainer from "../components/HowContainer";
 import Testimonial from "../components/Testimonial";
 import CallInAction from "../components/CallInAction";
+import Footer from "../components/Footer";
 
 const Home = () => {
    return (
@@ -19,6 +20,7 @@ const Home = () => {
          <HowContainer />
          <Testimonial />
          <CallInAction />
+         <Footer />
       </>
    );
 };

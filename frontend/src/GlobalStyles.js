@@ -232,4 +232,43 @@ ul li {
     max-width: 1140px;
     }
 }
+label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+label, button, select {
+    cursor: pointer;
+}
+input {
+    background: #f4f4f4;
+    border: 1px solid transparent;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+[type="checkbox"], [type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+}
+select, input, textarea, button {
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #bccaea;
+    outline: none;
+}
+textarea {
+    height: 200px;
+    resize: none;
+    padding: 10px;
+}
+button, input {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+}
 `;
