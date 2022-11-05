@@ -32,7 +32,7 @@ const Footer = () => {
             </div>
             <div className="contact-form">
                <div className="form-group">
-                  <label for="name">Your Full Name</label>
+                  <label htmlFor="name">Your Full Name</label>
                   <input
                      type="text"
                      name="name"
@@ -41,7 +41,7 @@ const Footer = () => {
                   />
                </div>
                <div className="form-group">
-                  <label for="email">Your Email</label>
+                  <label htmlFor="email">Your Email</label>
                   <input
                      type="email"
                      name="email"
@@ -50,7 +50,7 @@ const Footer = () => {
                   />
                </div>
                <div className="form-group">
-                  <label for="name">Message</label>
+                  <label htmlFor="name">Message</label>
                   <textarea
                      name="message"
                      id="message"
@@ -59,7 +59,7 @@ const Footer = () => {
                </div>
                <div className="form-group check-group">
                   <input type="checkbox" id="check" required />
-                  <label for="check">
+                  <label htmlFor="check">
                      I agree to receive emails, newsletters and promotional
                      messages
                   </label>
