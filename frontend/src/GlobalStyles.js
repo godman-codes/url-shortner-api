@@ -259,9 +259,13 @@ input {
 }
 select, input, textarea, button {
     width: 100%;
-    background-color: #ffffff;
+    background-color: var(--white);
     border: 1px solid #bccaea;
     outline: none;
+}
+input, button, select {
+    height: 50px;
+    color: #504c89;
 }
 textarea {
     height: 200px;
