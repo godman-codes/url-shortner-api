@@ -104,7 +104,7 @@ export const Content = styled.div`
                      #e2906e 0%,
                      #e83a99 100%
                   );
-                  box-shadow: 2.419px 9.703px 12.48px 0.52px
+                  box-shadow: 2.419px 3.703px 12.48px 0.52px
                      rgb(232 58 153 / 50%);
                   width: auto;
                   padding: 0 45px;
