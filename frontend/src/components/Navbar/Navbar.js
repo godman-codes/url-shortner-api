@@ -64,6 +64,11 @@ const NavBar = () => {
       }
    };
    window.addEventListener("scroll", changeBackground);
+   // window.addEventListener("resize", (e) => {
+   // this will fix the bug of over lay showing when you
+   // resixe window away from the max-width of the drop down meneu
+   //    dispatch({ type: "closeMenu" });
+   // });
 
    return (
       <Wrapper>

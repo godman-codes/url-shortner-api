@@ -281,4 +281,7 @@ button, input, optgroup, select, textarea {
     line-height: 1.15;
     margin: 0;
 }
+.text-center {
+    text-align: center!important;
+}
 `;

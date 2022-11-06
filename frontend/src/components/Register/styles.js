@@ -57,12 +57,147 @@ export const Content = styled.div`
             color: var(--white);
             font-size: 20px;
             font-weight: bold;
+            padding-left: 5px;
          }
       }
    }
    .account-title > * {
       @media (max-width: 767px) {
          max-width: 50%;
+      }
+   }
+   .account-wrapper {
+      max-width: 540px;
+      margin: 0 auto;
+      border-radius: 30px;
+      background: var(--white);
+      padding: 60px 0;
+      @media (max-width: 575px) {
+         font-size: 16px;
+      }
+      .account-header {
+         padding: 0 40px 40px;
+         text-align: center;
+         @media (max-width: 575px) {
+            padding: 0 15px 30px;
+         }
+         .title {
+            margin-bottom: 23px;
+            font-weight: 500;
+         }
+         .sign-in-with {
+            align-items: center;
+            justify-content: center;
+            padding: 12px 40px;
+            color: #504c89;
+            border: 1px solid #aa9dd0;
+            -webkit-border-radius: 27px;
+            -moz-border-radius: 27px;
+            border-radius: 27px;
+            @media (max-width: 575px) {
+               padding: 12px 30px;
+            }
+            img {
+               width: 24px;
+               margin-right: 10px;
+               @media (max-width: 575px) {
+                  width: 20px;
+               }
+            }
+         }
+      }
+      .or {
+         position: relative;
+         text-align: center;
+         ::before {
+            position: absolute;
+            content: "";
+            top: 50%;
+            left: 0;
+            height: 1px;
+            width: 100%;
+            background: #dddce7;
+         }
+         span {
+            display: inline-block;
+            padding: 0 12px;
+            font-weight: 600;
+            color: var(--purple);
+            text-transform: uppercase;
+            background: var(--white);
+            position: relative;
+            z-index: 1;
+         }
+      }
+      .account-body {
+         padding: 10px 40px 0;
+         text-align: center;
+         @media (max-width: 575px) {
+            padding: 0 15px 0;
+         }
+         .work-email {
+            margin-bottom: 20px;
+            display: block !important;
+         }
+         .account-form {
+            text-align: left;
+            .form-group {
+               margin-bottom: 13px;
+               label {
+                  font-size: 18px;
+                  font-weight: 500;
+                  font-family: "Josefin Sans Regular";
+                  color: var(--purple);
+                  cursor: pointer;
+               }
+               input {
+                  border: 1px solid rgba(59, 54, 140, 0.1);
+                  -webkit-border-radius: 5px;
+                  -moz-border-radius: 5px;
+                  border-radius: 5px;
+                  background-color: #f6f6fa;
+                  padding: 0 30px;
+                  height: 50px;
+               }
+               button {
+                  border: none;
+                  -webkit-border-radius: 10px;
+                  -moz-border-radius: 10px;
+                  border-radius: 10px;
+                  background: -moz-linear-gradient(
+                     0deg,
+                     #e2906e 0%,
+                     #e83a99 100%
+                  );
+                  background: -webkit-linear-gradient(
+                     0deg,
+                     #e2906e 0%,
+                     #e83a99 100%
+                  );
+                  background: -ms-linear-gradient(
+                     0deg,
+                     #e2906e 0%,
+                     #e83a99 100%
+                  );
+                  box-shadow: 2.419px 9.703px 12.48px 0.52px
+                     rgb(232 58 153 / 50%);
+                  width: auto;
+                  padding: 0 45px;
+                  color: #ffffff;
+                  margin-top: 20px;
+               }
+               span {
+                  margin-top: 15px;
+                  display: block !important;
+                  a {
+                     padding-left: 5px;
+                     color: #0403c4;
+                     font-weight: 600;
+                     text-transform: capitalize;
+                  }
+               }
+            }
+         }
       }
    }
 `;

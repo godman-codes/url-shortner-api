@@ -3,17 +3,21 @@ import { Wrapper, Content } from "./styles";
 import { Link } from "react-router-dom";
 import Logo from "../../images/logo_transparent.png";
 import Google from "../../images/google.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 
 const LoginPageComponent = () => {
    return (
       <Wrapper>
          <Content className="container">
             <div className="account-title">
-               <Link to="/">
-                  <h4>
-                     <img src={Logo} alt="logo" />
-                     Godman
-                  </h4>
+               <Link className="back-home" to="/">
+                  <FontAwesomeIcon icon={faAngleDoubleLeft} />
+                  &nbsp; <span>Back</span>
+               </Link>
+               <Link className="logo" to="/">
+                  <img src={Logo} alt="logo" />
+                  <span>Godman</span>
                </Link>
             </div>
             <div className="account-wrapper">
