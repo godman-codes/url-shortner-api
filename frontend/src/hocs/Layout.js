@@ -3,16 +3,14 @@ import React, { useEffect } from "react";
 import { Wrapper } from "./styles";
 
 const Layout = (props) => {
-   const loader = document.getElementById("preloader");
-   console.log(loader);
-   window.addEventListener("load", function () {
-      loader.style.display = "none";
-   });
    useEffect(() => {
       const loader = document.getElementById("preloader");
       console.log(loader);
       window.addEventListener("load", function () {
-         loader.style.display = "none";
+         const loaded = () => {
+            loader.style.display = "none";
+         };
+         setTimeout(loaded, 3000);
       });
       return () =>
          document.body.removeEventListener("load", function () {
