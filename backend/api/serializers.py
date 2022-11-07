@@ -21,4 +21,5 @@ class UrlSerializersDetails(UrlSerializers):
             'short_link',
             'original_link',
             'visited',
+            'date_created',
         ]

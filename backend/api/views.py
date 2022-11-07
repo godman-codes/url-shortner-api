@@ -27,7 +27,7 @@ class ShortenerCreateView(CreateAPIView):
 
 class Redirector(View):
     def get(self, request, shortener_link, *args, **kwargs):
-        shortener_link = settings.HOST_URL + self.kwargs['shortener_link']
+        shortener_link = settings.HOST_URL_SHORTENER + self.kwargs['shortener_link']
         if not UrlsShortener.objects.filter(
             short_link=shortener_link
             ).exists():
