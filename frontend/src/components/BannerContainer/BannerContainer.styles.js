@@ -126,15 +126,35 @@ export const Content = styled.div`
             font-size: 16px;
             box-shadow: inset 0 0 6px #00a2ff, inset 0 0 6px #00a2ff,
                inset 0 0 6px #00a2ff;
+            -webkit-box-shadow: inset 0 0 6px #00a2ff, inset 0 0 6px #00a2ff,
+               inset 0 0 6px #00a2ff;
             margin-bottom: 25px;
             padding-top: 3px;
-            color: #504c89;
-            outline: none;
+            /* outline: none; */
             @media screen and (max-width: 767px) {
                width: 100%;
             }
             @media screen and (max-width: 575px) {
                height: 50px;
+            }
+            ::placeholder {
+               /* Chrome, Firefox, Opera, Safari 10.1+ */
+               color: var(--purple);
+               font-size: 18px;
+               /* padding-top: 5px; */
+               opacity: 0.7; /* Firefox */
+            }
+
+            :-ms-input-placeholder {
+               /* Internet Explorer 10-11 */
+               color: var(--purple);
+               opacity: 0.7;
+            }
+
+            ::-ms-input-placeholder {
+               /* Microsoft Edge */
+               color: var(--purple);
+               opacity: 0.7;
             }
          }
          button {

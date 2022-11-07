@@ -104,6 +104,25 @@ export const Content = styled.div`
                inset 0 0 6px #00a2ff;
             border: none;
             font-size: 16px;
+            ::placeholder {
+               /* Chrome, Firefox, Opera, Safari 10.1+ */
+               color: var(--purple);
+               font-size: 18px;
+               /* padding-top: 5px; */
+               opacity: 0.7; /* Firefox */
+            }
+
+            :-ms-input-placeholder {
+               /* Internet Explorer 10-11 */
+               color: var(--purple);
+               opacity: 0.7;
+            }
+
+            ::-ms-input-placeholder {
+               /* Microsoft Edge */
+               color: var(--purple);
+               opacity: 0.7;
+            }
          }
          textarea {
             height: 140px;
@@ -119,6 +138,25 @@ export const Content = styled.div`
                inset 0 0 6px #00a2ff;
             border: none;
             font-size: 16px;
+            ::placeholder {
+               /* Chrome, Firefox, Opera, Safari 10.1+ */
+               color: var(--purple);
+               font-size: 18px;
+               /* padding-top: 5px; */
+               opacity: 0.7; /* Firefox */
+            }
+
+            :-ms-input-placeholder {
+               /* Internet Explorer 10-11 */
+               color: var(--purple);
+               opacity: 0.7;
+            }
+
+            ::-ms-input-placeholder {
+               /* Microsoft Edge */
+               color: var(--purple);
+               opacity: 0.7;
+            }
          }
          button {
             background: var(--button_gradient_blue);
