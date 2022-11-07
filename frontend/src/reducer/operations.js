@@ -5,7 +5,7 @@ const initialState = {
    // refresh: localStorage.getItem("refresh"),
    // isAuthenticated: null,
    // user: null,
-   all_urls: localStorage.getItem("all_urls"),
+   all_urls: JSON.parse(localStorage.getItem("all_urls")),
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -13,11 +13,21 @@ export default function (state = initialState, action) {
    const { type, payload } = action;
    switch (type) {
       case URL_SHORTENING_SUCCESS:
-         localStorage.setItem("all_urls", state.all_urls + payload.url);
-         return {
-            ...state,
-            all_urls: state.all_urls + payload.url,
-         };
+         if (state.all_urls == null) {
+            localStorage.setItem("all_urls", JSON.stringify([payload]));
+            return {
+               ...state,
+               all_urls: [payload],
+            };
+         } else {
+            let man = JSON.parse(localStorage.getItem("all_urls"));
+            man.push(payload);
+            localStorage.setItem("all_urls", JSON.stringify(man));
+            return {
+               ...state,
+               all_urls: man,
+            };
+         }
       case URL_SHORTENING_FAIL:
          return {
             ...state,

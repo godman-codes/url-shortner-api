@@ -2,8 +2,26 @@ import React from "react";
 import { Wrapper, Content } from "./BannerContainer.styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRocket } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
-const BannerContainer = () => {
+const BannerContainer = ({ handler }) => {
+   const [formData, setFormData] = useState({
+      original_link: "",
+   });
+
+   const { original_link } = formData;
+
+   const onChange = (e) => {
+      console.log(e.target.value);
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+   };
+   const onSubmit = (e) => {
+      e.preventDefault();
+      console.log(e);
+      console.log(original_link);
+      handler(original_link);
+   };
+
    return (
       <Wrapper>
          <Content>
@@ -17,8 +35,18 @@ const BannerContainer = () => {
             </div>
             <div className="form-container">
                <h3 className="subtitle">Shorten URL Is Just Simple</h3>
-               <form className="form-container-form">
-                  <input type="text" placeholder="Your URL here" />
+               <form
+                  className="form-container-form"
+                  onSubmit={(e) => onSubmit(e)}
+               >
+                  <input
+                     type="text"
+                     placeholder="Your URL here"
+                     onChange={(e) => onChange(e)}
+                     value={original_link}
+                     required
+                     name="original_link"
+                  />
                   <button type="submit">
                      Shorten <FontAwesomeIcon icon={faRocket} />
                   </button>

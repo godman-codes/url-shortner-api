@@ -5,12 +5,11 @@ import { Wrapper } from "./styles";
 const Layout = (props) => {
    useEffect(() => {
       const loader = document.getElementById("preloader");
-      console.log(loader);
       window.addEventListener("load", function () {
          const loaded = () => {
             loader.style.display = "none";
          };
-         setTimeout(loaded, 3000);
+         setTimeout(loaded, 1000);
       });
       return () =>
          document.body.removeEventListener("load", function () {
