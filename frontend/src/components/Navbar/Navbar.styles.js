@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
    background-color: transparent;
    #colored {
       background-color: var(--nav_blue);
-      transition: background-color 200ms linear;
+      /* transition: background-color 200ms linear; */
    }
    @media screen and (max-width: 966px) {
       height: 85px;

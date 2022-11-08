@@ -11,16 +11,17 @@ import Footer from "../components/Footer";
 import { connect } from "react-redux";
 import { shortenUrl } from "../actions/operations";
 
-const Home = ({ shortenUrl }) => {
+const Home = ({ shortenUrl, all_urls }) => {
    const actions = async (body) => {
       console.log(body);
       shortenUrl(body);
    };
+   console.log(all_urls);
    return (
       <>
          <NavBar />
          <BannerOne />
-         <BannerContainer handler={actions} />
+         <BannerContainer handler={actions} all_urls={all_urls} />
          <InformationSection />
          <FeaturesContainer />
          <HowContainer />
@@ -30,5 +31,7 @@ const Home = ({ shortenUrl }) => {
       </>
    );
 };
-
-export default connect(null, { shortenUrl })(Home);
+const mapStateToProps = (state) => ({
+   all_urls: state.operations.all_urls,
+});
+export default connect(mapStateToProps, { shortenUrl })(Home);

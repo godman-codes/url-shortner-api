@@ -57,7 +57,7 @@ const NavBar = () => {
    }, []);
 
    const changeBackground = () => {
-      if (window.scrollY >= 91) {
+      if (window.scrollY >= 80) {
          setNavbar(true);
       } else {
          setNavbar(false);
@@ -84,13 +84,13 @@ const NavBar = () => {
                </div>
                <ul className={state.expandMenu}>
                   <li>
-                     <Link to="/login">Home</Link>
+                     <Link to="/">Home</Link>
                   </li>
                   <li>
-                     <Link to="/login">Faq</Link>
+                     <Link to="/">Faq</Link>
                   </li>
                   <li>
-                     <Link to="/login">Contact</Link>
+                     <Link to="/">Contact</Link>
                   </li>
                   <li className="second-auth">
                      <Link to="/login">Login</Link>

@@ -4,10 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRocket } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
-const BannerContainer = ({ handler }) => {
+const BannerContainer = ({ handler, all_urls }) => {
    const [formData, setFormData] = useState({
       original_link: "",
    });
+
+   console.log(all_urls);
 
    const { original_link } = formData;
 
@@ -51,6 +53,28 @@ const BannerContainer = ({ handler }) => {
                      Shorten <FontAwesomeIcon icon={faRocket} />
                   </button>
                </form>
+               <ul className="most-recent-links">
+                  {all_urls.map((url, i) => (
+                     <li className="urls" key={i}>
+                        <span className="long-link">{url.original_link}</span>
+                        <span className="other">
+                           <span className="short-link">
+                              <a
+                                 href={url.short_link}
+                                 rel="noreferrer"
+                                 target="_blank"
+                                 title={`Shortened URL for ${url.original_link}`}
+                              >
+                                 {url.short_link}
+                              </a>
+                           </span>
+                           <span className="copy">
+                              <button>Copy</button>
+                           </span>
+                        </span>
+                     </li>
+                  ))}
+               </ul>
                <div className="banner-counter">
                   <div className="counter-item">
                      <h2 className="counter-title">

@@ -177,6 +177,61 @@ export const Content = styled.div`
             }
          }
       }
+      .most-recent-links {
+         padding: 0;
+         /* color: var(--white); */
+         border-radius: 10px;
+         .urls {
+            padding: 16px 0;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: var(--light_blue) 1px solid;
+            position: relative;
+            display: block;
+            display: flex;
+            @media (max-width: 991px) {
+               flex-direction: column;
+            }
+            .long-link {
+               vertical-align: middle;
+               white-space: nowrap;
+               overflow: hidden;
+               text-overflow: ellipsis;
+               max-width: 400px;
+            }
+            .other {
+               display: inline-block;
+               max-width: 300px;
+               .short-link {
+                  padding-right: 10px;
+                  display: inline;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  a {
+                     :visited {
+                        color: blue;
+                     }
+                  }
+               }
+               .copy {
+                  display: inline;
+                  overflow: unset;
+                  padding: 2px;
+                  @media (min-width: 991px) {
+                     width: 50px;
+                  }
+                  button {
+                     width: 50px;
+                     height: 30px;
+                     color: var(--white);
+                     border-radius: 5px;
+                     background: var(--button_gradient_blue);
+                  }
+               }
+            }
+         }
+      }
    }
    .banner-counter {
       display: flex;
