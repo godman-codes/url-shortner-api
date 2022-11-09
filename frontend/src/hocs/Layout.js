@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 // import NavBar from "../components/Navbar/Navbar";
 import { Wrapper } from "./styles";
+import { checkAuthenticated } from "../actions/auth";
+import { connect } from "react-redux";
 
 const Layout = (props) => {
    useEffect(() => {
@@ -11,10 +13,12 @@ const Layout = (props) => {
          };
          setTimeout(loaded, 1000);
       });
-      return () =>
+      return () => {
+         props.checkAuthenticated();
          document.body.removeEventListener("load", function () {
             loader.style.display = "none";
          });
+      };
    }, []);
    return (
       <div>
@@ -27,4 +31,4 @@ const Layout = (props) => {
       </div>
    );
 };
-export default Layout;
+export default connect(null, { checkAuthenticated })(Layout);

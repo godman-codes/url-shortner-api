@@ -1,8 +1,14 @@
-import { LOGIN_FAIL, LOGIN_SUCCESS } from "../actions/types";
+import {
+   LOGIN_FAIL,
+   LOGIN_SUCCESS,
+   AUTHENTICATED_SUCCESS,
+   AUTHENTICATED_FAIL,
+} from "../actions/types";
 
 const initialState = {
    access: localStorage.getItem("access"),
    refresh: localStorage.getItem("refresh"),
+   isAuthenticated: false,
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -16,6 +22,12 @@ export default function (state = initialState, action) {
             ...state,
             access: payload.access,
             refresh: payload.refresh,
+            isAuthenticated: true,
+         };
+      case AUTHENTICATED_SUCCESS:
+         return {
+            ...state,
+            isAuthenticated: true,
          };
       case LOGIN_FAIL:
          localStorage.removeItem("access");
@@ -24,6 +36,12 @@ export default function (state = initialState, action) {
             ...state,
             access: null,
             payload: null,
+            isAuthenticated: false,
+         };
+      case AUTHENTICATED_FAIL:
+         return {
+            ...state,
+            isAuthenticated: false,
          };
       default:
          return state;

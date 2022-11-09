@@ -16,7 +16,7 @@ const Home = ({ shortenUrl, all_urls }) => {
       console.log(body);
       shortenUrl(body);
    };
-   console.log(all_urls);
+   // console.log(all_urls);
    return (
       <>
          <NavBar />
