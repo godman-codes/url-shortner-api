@@ -19,7 +19,6 @@ const BannerContainer = ({ handler, all_urls }) => {
    };
    const onSubmit = (e) => {
       e.preventDefault();
-      console.log(e);
       console.log(original_link);
       handler(original_link);
    };

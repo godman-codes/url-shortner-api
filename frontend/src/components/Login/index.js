@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Wrapper, Content } from "./styles";
 import { Link } from "react-router-dom";
 import Logo from "../../images/logo_transparent.png";
@@ -6,7 +6,22 @@ import Google from "../../images/google.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 
-const LoginPageComponent = () => {
+const LoginPageComponent = ({ handler }) => {
+   const [formData, setFormData] = useState({ email: "", password: "" });
+   const { email, password } = formData;
+
+   const onChange = (e) => {
+      // console.log(e.target.value);
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+   };
+   const onSubmit = (e) => {
+      e.preventDefault();
+      // console.log(e);
+      // console.log(email, password, "line");
+      handler(email, password);
+   };
+   // console.log(formData);
+
    return (
       <Wrapper>
          <Content className="container">
@@ -23,21 +38,27 @@ const LoginPageComponent = () => {
             <div className="account-wrapper">
                <div className="account-body">
                   <h4 className="title">Welcome to Godman Shorts</h4>
-                  <form className="account-form">
+                  <form className="account-form" onSubmit={(e) => onSubmit(e)}>
                      <div className="form-group">
-                        <label htmlFor="sign-up">Your Email</label>
+                        <label htmlFor="email">Your Email</label>
                         <input
                            type="email"
                            placeholder="Enter Your Email"
                            name="email"
+                           value={email}
+                           onChange={(e) => onChange(e)}
+                           required
                         />
                      </div>
                      <div className="form-group">
-                        <label htmlFor="pass">Password</label>
+                        <label htmlFor="password">Password</label>
                         <input
                            type="password"
                            placeholder="Enter Your Password"
                            name="password"
+                           value={password}
+                           onChange={(e) => onChange(e)}
+                           required
                         />
                         <span className="forget-password">
                            Forgot your password?{" "}
