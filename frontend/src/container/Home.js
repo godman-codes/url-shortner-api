@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../components/Navbar/Navbar";
+// import NavBar from "../components/Navbar/Navbar";
 import BannerOne from "../components/BannerOne";
 import BannerContainer from "../components/BannerContainer";
 import InformationSection from "../components/InformationSection";
@@ -10,7 +10,8 @@ import CallInAction from "../components/CallInAction";
 import Footer from "../components/Footer";
 import { connect } from "react-redux";
 import { shortenUrl } from "../actions/operations";
-
+import Navbar from "../components/NewNavbar";
+// import Navbar from "../components/Navbar/Navbar";
 const Home = ({ shortenUrl, all_urls }) => {
    const actions = async (body) => {
       console.log(body);
@@ -19,7 +20,7 @@ const Home = ({ shortenUrl, all_urls }) => {
    // console.log(all_urls);
    return (
       <>
-         <NavBar />
+         <Navbar />
          <BannerOne />
          <BannerContainer handler={actions} all_urls={all_urls} />
          <InformationSection />
