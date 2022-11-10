@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef, useReducer } from "react";
 import { Wrapper, Content, InnerWrapper } from "./Navbar.styles";
 import { Link } from "react-router-dom";
 import Logo from "../../images/logo_transparent.png";
+import { connect } from "react-redux";
+import ProfileIcon from "../../images/profile.png";
 
 const reducer = (state, action) => {
    switch (action.type) {
@@ -36,7 +38,7 @@ const reducer = (state, action) => {
    }
 };
 
-const NavBar = () => {
+const NavBar = ({ isAuthenticated }) => {
    const [navbar, setNavbar] = useState(false);
    const menuRef = useRef();
    const [state, dispatch] = useReducer(reducer, {
@@ -87,17 +89,31 @@ const NavBar = () => {
                      <Link to="/">Home</Link>
                   </li>
                   <li>
-                     <Link to="/">Faq</Link>
-                  </li>
-                  <li>
                      <Link to="/">Contact</Link>
                   </li>
-                  <li className="second-auth">
-                     <Link to="/login">Login</Link>
+                  <li>
+                     <Link to="/">Faq</Link>
                   </li>
-                  <li className="second-auth">
-                     <Link to="/signup">Register</Link>
-                  </li>
+                  {isAuthenticated ? (
+                     <>
+                        <li className="auth-extra">
+                           <Link to="#!">Account</Link>
+                           <img src={ProfileIcon} alt="Profile" />
+                        </li>
+                        <li className="second-auth">
+                           <a href="#!">Logout</a>
+                        </li>
+                     </>
+                  ) : (
+                     <>
+                        <li className="second-auth">
+                           <Link to="/login">Login</Link>
+                        </li>
+                        <li className="second-auth">
+                           <Link to="/signup">Register</Link>
+                        </li>
+                     </>
+                  )}
                </ul>
                <div
                   ref={menuRef}
@@ -111,12 +127,25 @@ const NavBar = () => {
                   <div className="line3"></div>
                </div>
                <div id="auth">
-                  <Link id="login" to="/login">
-                     LOGIN
-                  </Link>
-                  <Link id="signup" to="/signup">
-                     REGISTER
-                  </Link>
+                  {isAuthenticated ? (
+                     <>
+                        <div id="profile">
+                           <img src={ProfileIcon} alt="profile" />
+                        </div>
+                        <a href="#!" id="signup">
+                           LOGOUT
+                        </a>
+                     </>
+                  ) : (
+                     <>
+                        <Link id="login" to="/login">
+                           LOGIN
+                        </Link>
+                        <Link id="signup" to="/signup">
+                           REGISTER
+                        </Link>
+                     </>
+                  )}
                </div>
                <div
                   className={"overlay " + (state.overlay ? "active" : "")}
@@ -126,5 +155,8 @@ const NavBar = () => {
       </Wrapper>
    );
 };
+const mapStateToProps = (state) => ({
+   isAuthenticated: state.auth.isAuthenticated,
+});
 
-export default NavBar;
+export default connect(mapStateToProps, {})(NavBar);

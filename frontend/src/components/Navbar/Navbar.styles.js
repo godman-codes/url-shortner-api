@@ -66,6 +66,9 @@ export const Content = styled.div`
       .second-auth {
          display: none;
       }
+      .auth-extra {
+         display: none;
+      }
       li {
          display: list-item;
          /* position: relative; */
@@ -87,6 +90,14 @@ export const Content = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+      div {
+         width: 50%;
+         text-align: center;
+         img {
+            height: 40px;
+            width: 40px;
+         }
+      }
       a {
          padding: 9px 25px 7px 25px;
          display: flex;
@@ -238,6 +249,13 @@ export const Content = styled.div`
       }
       .menu {
          height: 250px;
+         .auth-extra {
+            display: inherit;
+            img {
+               width: 25px;
+               height: 25px;
+            }
+         }
          .second-auth {
             display: flex;
             justify-content: center;
