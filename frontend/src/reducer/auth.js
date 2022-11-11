@@ -3,6 +3,7 @@ import {
    LOGIN_SUCCESS,
    AUTHENTICATED_SUCCESS,
    AUTHENTICATED_FAIL,
+   LOGOUT,
 } from "../actions/types";
 
 const initialState = {
@@ -37,6 +38,15 @@ export default function (state = initialState, action) {
             access: null,
             payload: null,
             isAuthenticated: false,
+         };
+      case LOGOUT:
+         localStorage.removeItem("access");
+         localStorage.removeItem("refresh");
+         return {
+            ...state,
+            isAuthenticated: false,
+            refresh: null,
+            access: null,
          };
       case AUTHENTICATED_FAIL:
          return {

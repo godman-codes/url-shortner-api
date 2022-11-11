@@ -10,8 +10,8 @@ import CallInAction from "../components/CallInAction";
 import Footer from "../components/Footer";
 import { connect } from "react-redux";
 import { shortenUrl } from "../actions/operations";
-import Navbar from "../components/NewNavbar";
-// import Navbar from "../components/Navbar/Navbar";
+// import Navbar from "../components/NewNavbar";
+import Navbar from "../components/Navbar/Navbar";
 const Home = ({ shortenUrl, all_urls }) => {
    const actions = async (body) => {
       console.log(body);

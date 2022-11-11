@@ -3,6 +3,7 @@ import {
    LOGIN_FAIL,
    AUTHENTICATED_SUCCESS,
    AUTHENTICATED_FAIL,
+   LOGOUT,
 } from "./types";
 import axios from "axios";
 
@@ -68,4 +69,10 @@ export const checkAuthenticated = () => async (dispatch) => {
          type: AUTHENTICATED_FAIL,
       });
    }
+};
+
+export const logout = () => (dispatch) => {
+   dispatch({
+      type: LOGOUT,
+   });
 };

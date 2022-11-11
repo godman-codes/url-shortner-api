@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useReducer, useEffect, useRef } from "react";
 import { Wrapper, Content } from "./styles";
 import { Link } from "react-router-dom";
 import Logo from "../../images/logo_transparent.png";
@@ -10,7 +10,7 @@ const reducer = (state, action) => {
             return {
                ...state,
                icon: "menu-icon active",
-               navbarToggle: "darkColored",
+               navbarToggle: "darkColored-nav",
                expandMenu: "menu active",
                overlay: true,
             };
@@ -38,6 +38,7 @@ const reducer = (state, action) => {
 
 const Navbar = () => {
    const [navbar, setNavbar] = useState(false);
+   const menuRef = useRef();
 
    const [state, dispatch] = useReducer(reducer, {
       icon: "menu-icon",
@@ -45,6 +46,16 @@ const Navbar = () => {
       expandMenu: "menu active-menu",
       overlay: false,
    });
+
+   useEffect(() => {
+      const closeDropdown = (e) => {
+         if (e.path[0] !== menuRef.current) {
+            dispatch({ type: "closeMenu" });
+         }
+      };
+      document.body.addEventListener("click", closeDropdown);
+      return () => document.body.removeEventListener("click", closeDropdown);
+   }, []);
 
    const changeBackground = () => {
       if (window.scrollY >= 80) {
@@ -55,7 +66,7 @@ const Navbar = () => {
    };
    window.addEventListener("scroll", changeBackground);
    return (
-      <Wrapper id={navbar ? "colored-nav" : ""} className={state.navbarToggle}>
+      <Wrapper className={navbar ? "colored-nav" : state.navbarToggle}>
          <Content className="container">
             <div className="header-wrapper">
                <div className="logo">
@@ -83,6 +94,7 @@ const Navbar = () => {
                   </li>
                </ul>
                <div
+                  ref={menuRef}
                   className={state.icon}
                   onClick={() => dispatch({ type: "toggleIcon" })}
                >

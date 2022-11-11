@@ -284,14 +284,21 @@ button, input, optgroup, select, textarea {
 .text-center {
     text-align: center!important;
 }
-#colored-nav {
+/* #colored-nav {
       background-color: var(--nav_blue);
       top: 0;
       @media screen and (max-width: 966px) {
             background-color: var(--purple);
          }
-}
+} */
 .darkColored-nav {
     background-color: var(--dark_purple);
+}
+.colored-nav {
+      background-color: var(--nav_blue);
+      top: 0;
+      @media screen and (max-width: 966px) {
+            background-color: var(--purple)!important;
+         }
 }
 `;

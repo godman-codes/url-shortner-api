@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef, useReducer } from "react";
 import { Wrapper, Content, InnerWrapper } from "./Navbar.styles";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Logo from "../../images/logo_transparent.png";
 import { connect } from "react-redux";
 import ProfileIcon from "../../images/profile.png";
+import { logout } from "../../actions/auth";
 
 const reducer = (state, action) => {
    switch (action.type) {
@@ -38,7 +39,7 @@ const reducer = (state, action) => {
    }
 };
 
-const NavBar = ({ isAuthenticated }) => {
+const NavBar = ({ logout, isAuthenticated }) => {
    const [navbar, setNavbar] = useState(false);
    const menuRef = useRef();
    const [state, dispatch] = useReducer(reducer, {
@@ -47,6 +48,10 @@ const NavBar = ({ isAuthenticated }) => {
       expandMenu: "menu active-menu",
       overlay: false,
    });
+   const logout_user = () => {
+      logout();
+      return <Navigate to="/" />;
+   };
 
    useEffect(() => {
       const closeDropdown = (e) => {
@@ -101,7 +106,9 @@ const NavBar = ({ isAuthenticated }) => {
                            <img src={ProfileIcon} alt="Profile" />
                         </li>
                         <li className="second-auth">
-                           <a href="#!">Logout</a>
+                           <a onClick={logout_user} href="#!">
+                              Logout
+                           </a>
                         </li>
                      </>
                   ) : (
@@ -132,7 +139,7 @@ const NavBar = ({ isAuthenticated }) => {
                         <div id="profile">
                            <img src={ProfileIcon} alt="profile" />
                         </div>
-                        <a href="#!" id="signup">
+                        <a onClick={logout_user} href="#!" id="signup">
                            LOGOUT
                         </a>
                      </>
@@ -159,4 +166,4 @@ const mapStateToProps = (state) => ({
    isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, {})(NavBar);
+export default connect(mapStateToProps, { logout })(NavBar);
