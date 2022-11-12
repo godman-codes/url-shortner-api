@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Wrapper, Content } from "./styles";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,7 +6,26 @@ import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../../images/logo_transparent.png";
 import Google from "../../images/google.png";
 
-const RegisterPageComponent = () => {
+const RegisterPageComponent = ({ handler }) => {
+   const [formData, setFormData] = useState({
+      first_name: "",
+      last_name: "",
+      email: "",
+      password: "",
+      re_password: "",
+   });
+
+   const { first_name, last_name, email, password, re_password } = formData;
+
+   const onChange = (e) => {
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+   };
+
+   const onSubmit = (e) => {
+      e.preventDefault();
+      handler(first_name, last_name, email, password, re_password);
+   };
+
    return (
       <Wrapper>
          <Content className="container">
@@ -35,10 +54,17 @@ const RegisterPageComponent = () => {
                   <span className="work-email">
                      Sign up with your work email
                   </span>
-                  <form className="account-form">
+                  <form onSubmit={(e) => onSubmit(e)} className="account-form">
                      <div className="form-group">
                         <label htmlFor="email">Email*</label>
-                        <input type="email" placeholder="Email" name="email" />
+                        <input
+                           type="email"
+                           placeholder="Email"
+                           name="email"
+                           required
+                           onChange={(e) => onChange(e)}
+                           value={email}
+                        />
                      </div>
                      <div className="form-group">
                         <label htmlFor="email">First Name*</label>
@@ -47,6 +73,8 @@ const RegisterPageComponent = () => {
                            placeholder="First Name"
                            name="first_name"
                            required
+                           onChange={(e) => onChange(e)}
+                           value={first_name}
                         />
                      </div>
                      <div className="form-group">
@@ -56,6 +84,8 @@ const RegisterPageComponent = () => {
                            placeholder="Last Name"
                            name="last_name"
                            required
+                           onChange={(e) => onChange(e)}
+                           first_name={last_name}
                         />
                      </div>
                      <div className="form-group">
@@ -65,6 +95,8 @@ const RegisterPageComponent = () => {
                            placeholder="Password"
                            name="password"
                            required
+                           onChange={(e) => onChange(e)}
+                           value={password}
                         />
                      </div>
                      <div className="form-group">
@@ -73,7 +105,9 @@ const RegisterPageComponent = () => {
                            type="password"
                            placeholder="Confirm Password"
                            name="re_password"
+                           value={re_password}
                            required
+                           onChange={(e) => onChange(e)}
                         />
                      </div>
                      <div className="form-group text-center">

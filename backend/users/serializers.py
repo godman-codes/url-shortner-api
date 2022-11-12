@@ -42,6 +42,7 @@ class UserSerializer(serializers.ModelSerializer):
 
         if attrs['password'] != attrs['re_password']:
             raise serializers.ValidationError({"password": "Password fields didn't match."})
+        attrs.pop('re_password')
         return attrs
         
             

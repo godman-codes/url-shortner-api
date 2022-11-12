@@ -8,6 +8,7 @@ import {
    SIGNUP_FAIL,
 } from "./types";
 import axios from "axios";
+// import { Navigate } from "react-router-dom";
 
 export const login = (email, password) => async (dispatch) => {
    const config = {
