@@ -4,6 +4,8 @@ import {
    AUTHENTICATED_SUCCESS,
    AUTHENTICATED_FAIL,
    LOGOUT,
+   SIGNUP_SUCCESS,
+   SIGNUP_FAIL,
 } from "../actions/types";
 
 const initialState = {
@@ -25,6 +27,9 @@ export default function (state = initialState, action) {
             refresh: payload.refresh,
             isAuthenticated: true,
          };
+      case SIGNUP_SUCCESS:
+         return { state };
+
       case AUTHENTICATED_SUCCESS:
          return {
             ...state,
@@ -48,6 +53,7 @@ export default function (state = initialState, action) {
             refresh: null,
             access: null,
          };
+      case SIGNUP_FAIL:
       case AUTHENTICATED_FAIL:
          return {
             ...state,
