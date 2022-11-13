@@ -12,6 +12,7 @@ const initialState = {
    access: localStorage.getItem("access"),
    refresh: localStorage.getItem("refresh"),
    isAuthenticated: false,
+   signalMessages: null,
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
