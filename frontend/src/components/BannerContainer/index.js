@@ -9,7 +9,7 @@ const BannerContainer = ({ handler, all_urls }) => {
       original_link: "",
    });
 
-   console.log(all_urls);
+   console.table(all_urls);
 
    const { original_link } = formData;
 
@@ -21,6 +21,16 @@ const BannerContainer = ({ handler, all_urls }) => {
       e.preventDefault();
       console.log(original_link);
       handler(original_link);
+   };
+
+   const copyAction = () => {
+      // get the element
+      let copy = document.getElementById("short-link");
+      console.log(copy.textContent);
+      // copy.selected();
+      // copy.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(copy.textContent);
+      alert(`copied the link: ${copy.textContent}`);
    };
 
    return (
@@ -59,6 +69,7 @@ const BannerContainer = ({ handler, all_urls }) => {
                         <span className="other">
                            <span className="short-link">
                               <a
+                                 id="short-link"
                                  href={url.short_link}
                                  rel="noreferrer"
                                  target="_blank"
@@ -68,7 +79,7 @@ const BannerContainer = ({ handler, all_urls }) => {
                               </a>
                            </span>
                            <span className="copy">
-                              <button>Copy</button>
+                              <button onClick={() => copyAction()}>Copy</button>
                            </span>
                         </span>
                      </li>

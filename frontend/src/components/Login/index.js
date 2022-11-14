@@ -5,22 +5,27 @@ import Logo from "../../images/logo_transparent.png";
 import Google from "../../images/google.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
+import ErrorMessage from "../ErrorMessage";
+// import SnackBar from "../Snackbar";
 
-const LoginPageComponent = ({ handler }) => {
+const LoginPageComponent = ({ handler, err }) => {
+   const [showErr, setShowErr] = useState(false);
    const [formData, setFormData] = useState({ email: "", password: "" });
    const { email, password } = formData;
 
    const onChange = (e) => {
       // console.log(e.target.value);
+      setShowErr(false);
       setFormData({ ...formData, [e.target.name]: e.target.value });
    };
-   const onSubmit = (e) => {
+   const onSubmit = async (e) => {
       e.preventDefault();
       // console.log(e);
       // console.log(email, password, "line");
-      handler(email, password);
+      await handler(email, password);
+      console.log(err);
+      setShowErr(true);
    };
-   // console.log(formData);
 
    return (
       <Wrapper>
@@ -60,6 +65,15 @@ const LoginPageComponent = ({ handler }) => {
                            onChange={(e) => onChange(e)}
                            required
                         />
+                        {showErr && (
+                           <ErrorMessage
+                              message={
+                                 err === "Unauthorized"
+                                    ? "Email or password is incorrect. Try again."
+                                    : ""
+                              }
+                           />
+                        )}
                         <span className="forget-password">
                            Forgot your password?{" "}
                            <Link to="#0">recover password</Link>

@@ -17,7 +17,7 @@ const initialState = {
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function (state = initialState, action) {
-   const { type, payload } = action;
+   const { type, payload, message } = action;
    switch (type) {
       case LOGIN_SUCCESS:
          localStorage.setItem("access", payload.access);
@@ -27,6 +27,7 @@ export default function (state = initialState, action) {
             access: payload.access,
             refresh: payload.refresh,
             isAuthenticated: true,
+            signalMessages: message,
          };
       case SIGNUP_SUCCESS:
          return { state };
@@ -42,8 +43,9 @@ export default function (state = initialState, action) {
          return {
             ...state,
             access: null,
-            payload: null,
+            refresh: null,
             isAuthenticated: false,
+            signalMessages: message,
          };
       case LOGOUT:
          localStorage.removeItem("access");
