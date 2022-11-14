@@ -64,9 +64,10 @@ export const Signup =
          console.log(res);
          dispatch({
             type: SIGNUP_SUCCESS,
+            message: res.statusText,
          });
       } catch (err) {
-         dispatch({ type: SIGNUP_FAIL });
+         dispatch({ type: SIGNUP_FAIL, message: err.response.data });
          console.log(err);
       }
    };

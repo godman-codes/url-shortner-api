@@ -5,8 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../../images/logo_transparent.png";
 import Google from "../../images/google.png";
+import ErrorMessage from "../ErrorMessage";
 
-const RegisterPageComponent = ({ handler }) => {
+const RegisterPageComponent = ({ handler, err }) => {
    const [formData, setFormData] = useState({
       first_name: "",
       last_name: "",
@@ -21,9 +22,9 @@ const RegisterPageComponent = ({ handler }) => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
    };
 
-   const onSubmit = (e) => {
+   const onSubmit = async (e) => {
       e.preventDefault();
-      handler(first_name, last_name, email, password, re_password);
+      await handler(first_name, last_name, email, password, re_password);
    };
 
    return (
@@ -42,6 +43,14 @@ const RegisterPageComponent = ({ handler }) => {
             <div className="account-wrapper">
                <div className="account-header">
                   <h4 className="title">Let's get started</h4>
+                  <ErrorMessage
+                     message={
+                        err === "Created"
+                           ? "Account created successfully a link has been sent to your mail for account activation"
+                           : ""
+                     }
+                     color="green"
+                  />
                   <Link className="sign-in-with" to="#0">
                      <img src={Google} alt="Google-icon" />
                      <span>Sign Up with Google</span>
@@ -56,8 +65,14 @@ const RegisterPageComponent = ({ handler }) => {
                   </span>
                   <form onSubmit={(e) => onSubmit(e)} className="account-form">
                      <div className="form-group">
-                        <label htmlFor="email">Email*</label>
+                        <label
+                           style={err.email && { color: "red" }}
+                           htmlFor="email"
+                        >
+                           Email*
+                        </label>
                         <input
+                           style={err.email && { border: "1px solid red" }}
                            type="email"
                            placeholder="Email"
                            name="email"
@@ -65,6 +80,7 @@ const RegisterPageComponent = ({ handler }) => {
                            onChange={(e) => onChange(e)}
                            value={email}
                         />
+                        <ErrorMessage message={err.email ? err.email[0] : ""} />
                      </div>
                      <div className="form-group">
                         <label htmlFor="email">First Name*</label>
@@ -89,8 +105,14 @@ const RegisterPageComponent = ({ handler }) => {
                         />
                      </div>
                      <div className="form-group">
-                        <label htmlFor="password">Password*</label>
+                        <label
+                           style={err.password && { color: "red" }}
+                           htmlFor="password"
+                        >
+                           Password*
+                        </label>
                         <input
+                           style={err.password && { border: "1px solid red" }}
                            type="password"
                            placeholder="Password"
                            name="password"
@@ -98,16 +120,28 @@ const RegisterPageComponent = ({ handler }) => {
                            onChange={(e) => onChange(e)}
                            value={password}
                         />
+                        <ErrorMessage
+                           message={err.password ? err.password[0] : ""}
+                        />
                      </div>
                      <div className="form-group">
-                        <label htmlFor="password">Confirm Password*</label>
+                        <label
+                           style={err.password && { color: "red" }}
+                           htmlFor="password"
+                        >
+                           Confirm Password*
+                        </label>
                         <input
+                           style={err.password && { border: "1px solid red" }}
                            type="password"
                            placeholder="Confirm Password"
                            name="re_password"
                            value={re_password}
                            required
                            onChange={(e) => onChange(e)}
+                        />
+                        <ErrorMessage
+                           message={err.password ? err.password[0] : ""}
                         />
                      </div>
                      <div className="form-group text-center">

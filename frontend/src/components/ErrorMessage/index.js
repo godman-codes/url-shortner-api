@@ -1,8 +1,8 @@
 import React from "react";
 import { Wrapper } from "./styles";
 
-const ErrorMessage = ({ message }) => {
-   return <Wrapper>{message}</Wrapper>;
+const ErrorMessage = ({ message, color }) => {
+   return <Wrapper style={{ color: color }}>{message}</Wrapper>;
 };
 
 export default ErrorMessage;

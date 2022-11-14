@@ -3,7 +3,7 @@ import RegisterPageComponent from "../components/Register";
 import { connect } from "react-redux";
 import { Signup } from "../actions/auth";
 
-const SignUp = ({ Signup }) => {
+const SignUp = ({ Signup, message }) => {
    const handleSignup = async (
       first_name,
       last_name,
@@ -11,9 +11,12 @@ const SignUp = ({ Signup }) => {
       password,
       re_password
    ) => {
-      Signup(first_name, last_name, email, password, re_password);
+      await Signup(first_name, last_name, email, password, re_password);
    };
-   return <RegisterPageComponent handler={handleSignup} />;
+   return <RegisterPageComponent handler={handleSignup} err={message} />;
 };
 
-export default connect(null, { Signup })(SignUp);
+const mapStateToProps = (state) => ({
+   message: state.auth.signalMessages,
+});
+export default connect(mapStateToProps, { Signup })(SignUp);

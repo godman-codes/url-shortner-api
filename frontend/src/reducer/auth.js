@@ -12,7 +12,7 @@ const initialState = {
    access: localStorage.getItem("access"),
    refresh: localStorage.getItem("refresh"),
    isAuthenticated: false,
-   signalMessages: null,
+   signalMessages: {},
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -30,7 +30,7 @@ export default function (state = initialState, action) {
             signalMessages: message,
          };
       case SIGNUP_SUCCESS:
-         return { state };
+         return { ...state, signalMessages: message };
 
       case AUTHENTICATED_SUCCESS:
          return {
@@ -57,6 +57,13 @@ export default function (state = initialState, action) {
             access: null,
          };
       case SIGNUP_FAIL:
+         return {
+            ...state,
+            access: null,
+            refresh: null,
+            isAuthenticated: false,
+            signalMessages: message,
+         };
       case AUTHENTICATED_FAIL:
          return {
             ...state,
