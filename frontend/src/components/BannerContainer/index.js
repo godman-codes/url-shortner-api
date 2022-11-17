@@ -9,7 +9,7 @@ const BannerContainer = ({ handler, all_urls }) => {
       original_link: "",
    });
 
-   console.table(all_urls);
+   // console.table(all_urls);
 
    const { original_link } = formData;
 

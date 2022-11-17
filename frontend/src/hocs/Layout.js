@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 // import NavBar from "../components/Navbar/Navbar";
 import { Wrapper } from "./styles";
-import { checkAuthenticated } from "../actions/auth";
+import { checkAuthenticated, loadUser } from "../actions/auth";
 import { connect } from "react-redux";
 
 const Layout = (props) => {
@@ -18,6 +18,7 @@ const Layout = (props) => {
          document.body.removeEventListener("load", function () {
             loader.style.display = "none";
          });
+         props.loadUser();
       };
    }, []);
    return (
@@ -31,4 +32,4 @@ const Layout = (props) => {
       </div>
    );
 };
-export default connect(null, { checkAuthenticated })(Layout);
+export default connect(null, { checkAuthenticated, loadUser })(Layout);

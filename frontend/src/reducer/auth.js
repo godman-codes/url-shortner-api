@@ -6,12 +6,15 @@ import {
    LOGOUT,
    SIGNUP_SUCCESS,
    SIGNUP_FAIL,
+   USER_LOADED_SUCCESS,
+   USER_LOADED_FAIL,
 } from "../actions/types";
 
 const initialState = {
    access: localStorage.getItem("access"),
    refresh: localStorage.getItem("refresh"),
    isAuthenticated: false,
+   user: null,
    signalMessages: {},
 };
 
@@ -36,6 +39,16 @@ export default function (state = initialState, action) {
          return {
             ...state,
             isAuthenticated: true,
+         };
+      case USER_LOADED_SUCCESS:
+         return {
+            ...state,
+            user: payload.user,
+         };
+      case USER_LOADED_FAIL:
+         return {
+            ...state,
+            user: null,
          };
       case LOGIN_FAIL:
          localStorage.removeItem("access");

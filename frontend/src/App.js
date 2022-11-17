@@ -6,6 +6,7 @@ import store from "./store";
 import Home from "./container/Home";
 import SignUp from "./container/SignUp";
 import Login from "./container/Login";
+import Dashboard from "./container/Dashboard";
 import { GlobalStyle } from "./GlobalStyles";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
                   <Route exact path="/" element={<Home />} />
                   <Route exact path="/login" element={<Login />} />
                   <Route exact path="/signup" element={<SignUp />} />
+                  <Route exact path="/dashboard" element={<Dashboard />} />
                </Routes>
             </Layout>
             <GlobalStyle />

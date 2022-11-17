@@ -146,12 +146,16 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'AUTH_HEADER_TYPES': ('Bearer',),
-    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=7),
+    'AUTH_HEADER_TYPES': ["Bearer"],
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(hours=7),
     'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=7),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': False,
-    'UPDATE_LAST_LOGIN': True
+    'UPDATE_LAST_LOGIN': True,
+    'AUTH_TOKEN_CLASSES': (
+        # this will use the access token as the authentication credential even though it is doing it by default
+        'rest_framework_simplejwt.tokens.AccessToken', # 9th step
+        )
 }
 
 AUTH_USER_MODEL = 'users.UserAccount'

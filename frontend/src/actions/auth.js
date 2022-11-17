@@ -6,6 +6,8 @@ import {
    LOGOUT,
    SIGNUP_SUCCESS,
    SIGNUP_FAIL,
+   USER_LOADED_SUCCESS,
+   USER_LOADED_FAIL,
 } from "./types";
 import axios from "axios";
 // import { Navigate } from "react-router-dom";
@@ -30,6 +32,7 @@ export const login = (email, password) => async (dispatch) => {
          payload: res.data,
          message: res.statusText,
       });
+      dispatch(loadUser());
    } catch (err) {
       console.log(err);
       dispatch({
@@ -87,7 +90,7 @@ export const checkAuthenticated = () => async (dispatch) => {
             body,
             config
          );
-         console.log(res.data);
+         console.log(res);
          if (res.data.code !== "token_not_valid") {
             dispatch({
                type: AUTHENTICATED_SUCCESS,
@@ -98,6 +101,7 @@ export const checkAuthenticated = () => async (dispatch) => {
             });
          }
       } catch (err) {
+         console.log(err);
          dispatch({
             type: AUTHENTICATED_FAIL,
          });
@@ -105,6 +109,38 @@ export const checkAuthenticated = () => async (dispatch) => {
    } else {
       dispatch({
          type: AUTHENTICATED_FAIL,
+      });
+   }
+};
+
+export const loadUser = () => async (dispatch) => {
+   if (localStorage.getItem("access")) {
+      const config = {
+         headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("access")}`,
+            Accept: "application/json",
+         },
+      };
+      try {
+         const res = await axios.get(
+            `${process.env.REACT_APP_API_URL}/api/users/me/`,
+            config
+         );
+         console.log(res);
+         dispatch({
+            type: USER_LOADED_SUCCESS,
+            payload: res.data,
+         });
+      } catch (err) {
+         console.log(err);
+         dispatch({
+            type: USER_LOADED_FAIL,
+         });
+      }
+   } else {
+      dispatch({
+         type: USER_LOADED_FAIL,
       });
    }
 };

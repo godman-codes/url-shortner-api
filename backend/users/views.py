@@ -12,7 +12,7 @@ class RegisterUserView(CreateAPIView):
 class RetrieveUserView(RetrieveAPIView):
     serializer_class = UserSerializer
     def get(self, request, format=None):
-        print(request.user)
+        # print(request)
         user = request.user
         user = UserSerializer(user)
         return Response(

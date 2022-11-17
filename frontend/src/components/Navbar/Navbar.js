@@ -91,7 +91,11 @@ const NavBar = ({ logout, isAuthenticated }) => {
                </div>
                <ul className={state.expandMenu}>
                   <li>
-                     <Link to="/">Home</Link>
+                     {isAuthenticated ? (
+                        <Link to="/dashboard">Dashboard</Link>
+                     ) : (
+                        <Link to="/">Home</Link>
+                     )}
                   </li>
                   <li>
                      <Link to="/">Contact</Link>
