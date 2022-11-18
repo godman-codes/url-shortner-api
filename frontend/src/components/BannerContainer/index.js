@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Wrapper, Content } from "./BannerContainer.styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRocket } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
 
 const BannerContainer = ({ handler, all_urls }) => {
    const [formData, setFormData] = useState({

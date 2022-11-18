@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     --ash-white: #f2f5ff;
     --dark_purple: #120a36;
     --light_purple: #7859da;
+    --light_purple-2: #adacda;
     --light_blue:  #0073e4;
     --blue: #0073E4;
     --sky_blue: #00F7FF;
