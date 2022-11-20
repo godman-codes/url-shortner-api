@@ -41,7 +41,7 @@ const DashboardTable = ({ handler }) => {
                         <th>Original Link</th>
                         <th>short Link</th>
                         <th>Visited</th>
-                        <th>Details</th>
+                        <th>Options</th>
                      </tr>
                   </thead>
                   <tbody>

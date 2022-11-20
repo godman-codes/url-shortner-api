@@ -1,4 +1,10 @@
-import { URL_SHORTENING_SUCCESS, URL_SHORTENING_FAIL } from "./types";
+import {
+   URL_SHORTENING_SUCCESS,
+   URL_SHORTENING_FAIL,
+   GET_ALL_URLS_SUCCESS,
+   GOOGLE_AUTH_FAIL,
+   GET_ALL_URLS_FAIL,
+} from "./types";
 import axios from "axios";
 
 export const shortenUrl = (original_link) => async (dispatch) => {
@@ -37,5 +43,32 @@ export const shortenUrl = (original_link) => async (dispatch) => {
       dispatch({
          type: URL_SHORTENING_FAIL,
       });
+   }
+};
+
+export const get_user_url = () => async (dispatch) => {
+   if (localStorage.getItem("access")) {
+      const config = {
+         "Content-Type": "application/json",
+         Authorization: `Bearer ${localStorage.getItem("access")}`,
+      };
+      try {
+         const res = await axios.get(
+            `${process.env.REACT_APP_API_URL}/api/`,
+            config
+         );
+         console.log(res);
+         dispatch({
+            type: GET_ALL_URLS_SUCCESS,
+            payload: res.data,
+         });
+      } catch (error) {
+         console.log(error);
+         dispatch({
+            type: GET_ALL_URLS_FAIL,
+         });
+      }
+   } else {
+      dispatch({ type: GET_ALL_URLS_FAIL });
    }
 };
