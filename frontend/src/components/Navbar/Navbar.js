@@ -39,7 +39,7 @@ const reducer = (state, action) => {
    }
 };
 
-const NavBar = ({ logout, isAuthenticated }) => {
+const NavBar = ({ logout, isAuthenticated, footerCallBack }) => {
    const [navbar, setNavbar] = useState(false);
    const menuRef = useRef();
    const [state, dispatch] = useReducer(reducer, {
@@ -97,7 +97,7 @@ const NavBar = ({ logout, isAuthenticated }) => {
                         <Link to="/">Home</Link>
                      )}
                   </li>
-                  <li>
+                  <li onClick={footerCallBack}>
                      <Link to="/">Contact</Link>
                   </li>
                   <li>

@@ -14,7 +14,7 @@ import {
    faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
 
-const Footer = () => {
+const Footer = ({ footerRef }) => {
    return (
       <Wrapper>
          <div className="footer-bg"></div>
@@ -22,7 +22,7 @@ const Footer = () => {
             <img src={Wave} alt="wave" />
          </div>
          <Content className="container">
-            <div className="section-header">
+            <div ref={footerRef} className="section-header">
                <h5 className="cate">Contact Us</h5>
                <h2 className="title">Get in touch</h2>
                <p>

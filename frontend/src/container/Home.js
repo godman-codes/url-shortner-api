@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 // import NavBar from "../components/Navbar/Navbar";
 import BannerOne from "../components/BannerOne";
 import BannerContainer from "../components/BannerContainer";
@@ -13,14 +13,22 @@ import { shortenUrl } from "../actions/operations";
 // import Navbar from "../components/NewNavbar";
 import Navbar from "../components/Navbar/Navbar";
 const Home = ({ shortenUrl, all_urls }) => {
+   const footer = useRef(null);
    const actions = async (body) => {
       console.log(body);
       shortenUrl(body);
    };
+   const focusFooter = () => {
+      console.log("caller");
+      footer.current.scrollIntoView({
+         behavior: "smooth",
+         block: "start",
+      });
+   };
    // console.log(all_urls);
    return (
       <>
-         <Navbar />
+         <Navbar footerCallBack={focusFooter} />
          <BannerOne />
          <BannerContainer handler={actions} all_urls={all_urls} />
          <InformationSection />
@@ -28,7 +36,7 @@ const Home = ({ shortenUrl, all_urls }) => {
          <HowContainer />
          <Testimonial />
          <CallInAction />
-         <Footer />
+         <Footer footerRef={footer} />
       </>
    );
 };

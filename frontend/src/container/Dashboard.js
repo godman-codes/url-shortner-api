@@ -5,6 +5,7 @@ import DashboardTable from "../components/DashboardTable";
 import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { get_user_url, shortenUrl } from "../actions/operations";
+import Footer from "../components/Footer";
 
 const Dashboard = ({
    isAuthenticated,
@@ -15,7 +16,8 @@ const Dashboard = ({
 }) => {
    const [trigger, setTrigger] = useState(true);
    useEffect(() => {
-      return () => get_user_url();
+      get_user_url();
+      return;
    }, [trigger]);
 
    const refresh = () => {
@@ -39,6 +41,7 @@ const Dashboard = ({
             handler={action}
             refresh={refresh}
          />
+         <Footer />
       </>
    );
 };
