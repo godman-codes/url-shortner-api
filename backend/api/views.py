@@ -8,7 +8,7 @@ from rest_framework.permissions import AllowAny
 
 class ShortenerListAPIView(ListAPIView):
     queryset = UrlsShortener.objects.all()
-    serializer_class = UrlSerializers
+    serializer_class = UrlSerializersDetails
 
     def get_queryset(self):
         return UrlsShortener.objects.filter(owner=self.request.user).all()

@@ -7,7 +7,7 @@ import {
 
 const initialState = {
    all_urls: JSON.parse(localStorage.getItem("all_urls")),
-   server_urls: {},
+   server_urls: [],
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export

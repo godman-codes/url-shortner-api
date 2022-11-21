@@ -96,7 +96,9 @@ export const Content = styled.div`
       @media screen and (max-width: 767px) {
          padding: 50px 30px 45px;
       }
-
+      /* .overflow {
+         overflow-x: auto;
+      } */
       .subtitle {
          color: var(--purple);
          font-weight: 600;

@@ -11,7 +11,7 @@ const Login = ({ login, isAuthenticated, message }) => {
       await login(email, password);
    };
    if (isAuthenticated) {
-      return <Navigate to="/" />;
+      return <Navigate to="/dashboard" />;
    }
    return (
       <>

@@ -2,7 +2,6 @@ import {
    URL_SHORTENING_SUCCESS,
    URL_SHORTENING_FAIL,
    GET_ALL_URLS_SUCCESS,
-   GOOGLE_AUTH_FAIL,
    GET_ALL_URLS_FAIL,
 } from "./types";
 import axios from "axios";
@@ -49,10 +48,13 @@ export const shortenUrl = (original_link) => async (dispatch) => {
 export const get_user_url = () => async (dispatch) => {
    if (localStorage.getItem("access")) {
       const config = {
-         "Content-Type": "application/json",
-         Authorization: `Bearer ${localStorage.getItem("access")}`,
+         headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("access")}`,
+         },
       };
       try {
+         console.log(config);
          const res = await axios.get(
             `${process.env.REACT_APP_API_URL}/api/`,
             config
