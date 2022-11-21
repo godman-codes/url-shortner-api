@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Navbar from "../components/Navbar/Navbar";
 import BannerOne from "../components/BannerOne";
 import DashboardTable from "../components/DashboardTable";
@@ -14,11 +14,20 @@ const Dashboard = ({
    url,
    server_urls,
 }) => {
+   const footer = useRef(null);
    const [trigger, setTrigger] = useState(true);
    useEffect(() => {
       get_user_url();
       return;
    }, [trigger]);
+
+   const focusFooter = () => {
+      console.log("caller");
+      footer.current.scrollIntoView({
+         behavior: "smooth",
+         block: "start",
+      });
+   };
 
    const refresh = () => {
       setTrigger(!trigger);
@@ -41,7 +50,7 @@ const Dashboard = ({
             handler={action}
             refresh={refresh}
          />
-         <Footer />
+         <Footer footerRef={focusFooter} />
       </>
    );
 };
