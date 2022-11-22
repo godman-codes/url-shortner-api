@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { get_user_url, shortenUrl } from "../actions/operations";
 import Footer from "../components/Footer";
+import MoreDetails from "../components/MoreDetails";
 
 const Dashboard = ({
    isAuthenticated,
@@ -16,6 +17,7 @@ const Dashboard = ({
 }) => {
    const footer = useRef(null);
    const [trigger, setTrigger] = useState(true);
+   const [showDetails, setShowDetails] = useState(false);
    useEffect(() => {
       get_user_url();
       return;
@@ -27,6 +29,12 @@ const Dashboard = ({
          behavior: "smooth",
          block: "start",
       });
+   };
+   const openDetails = () => {
+      setShowDetails(true);
+   };
+   const closeDetails = () => {
+      setShowDetails(false);
    };
 
    const refresh = () => {
@@ -42,15 +50,17 @@ const Dashboard = ({
    };
    return (
       <>
-         <Navbar />
+         <Navbar footerCallBack={focusFooter} />
          <BannerOne />
          <DashboardTable
             server_urls={server_urls}
             url={url}
             handler={action}
             refresh={refresh}
+            showDetails={openDetails}
          />
-         <Footer footerRef={focusFooter} />
+         {showDetails && <MoreDetails closeDetails={closeDetails} />}
+         <Footer footerRef={footer} />
       </>
    );
 };

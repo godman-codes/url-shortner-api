@@ -4,7 +4,13 @@ import { Table, Refresh } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRocket } from "@fortawesome/free-solid-svg-icons";
 
-const DashboardTable = ({ handler, url, refresh, server_urls }) => {
+const DashboardTable = ({
+   handler,
+   url,
+   refresh,
+   server_urls,
+   showDetails,
+}) => {
    const [formData, setFormData] = useState({
       original_link: "",
    });
@@ -49,7 +55,7 @@ const DashboardTable = ({ handler, url, refresh, server_urls }) => {
                         <th>ID</th>
                         <th className="original_link">Original Link</th>
                         <th>short Link</th>
-                        <th>Visited</th>
+                        <th>Visit</th>
                         <th>Info</th>
                      </tr>
                   </thead>
@@ -68,7 +74,7 @@ const DashboardTable = ({ handler, url, refresh, server_urls }) => {
                               <td>{url.short_link}</td>
                               <td className="id">{url.visited}</td>
                               <td>
-                                 <button>more</button>
+                                 <button onClick={showDetails}>more</button>
                               </td>
                            </tr>
                         ))
