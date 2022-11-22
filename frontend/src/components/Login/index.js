@@ -15,7 +15,9 @@ const LoginPageComponent = ({ handler, err }) => {
 
    const onChange = (e) => {
       // console.log(e.target.value);
-      setShowErr(false);
+      if (showErr) {
+         setShowErr(false);
+      }
       setFormData({ ...formData, [e.target.name]: e.target.value });
    };
    const onSubmit = async (e) => {

@@ -6,6 +6,7 @@ import { faRocket } from "@fortawesome/free-solid-svg-icons";
 
 const DashboardTable = ({
    handler,
+   handler2,
    url,
    refresh,
    server_urls,
@@ -37,6 +38,11 @@ const DashboardTable = ({
       alert(`copied the link: ${copy.textContent}`);
    };
 
+   const get_url = (id) => {
+      handler2(id);
+      showDetails();
+   };
+
    return (
       <Wrapper>
          <Content>
@@ -60,11 +66,7 @@ const DashboardTable = ({
                      </tr>
                   </thead>
                   <tbody>
-                     {server_urls === [] ? (
-                        <tr>
-                           <td colSpan="7">No Urls</td>
-                        </tr>
-                     ) : (
+                     {server_urls.length > 0 ? (
                         server_urls.map((url, i) => (
                            <tr key={i}>
                               <td className="id">{i + 1}</td>
@@ -74,10 +76,18 @@ const DashboardTable = ({
                               <td>{url.short_link}</td>
                               <td className="id">{url.visited}</td>
                               <td>
-                                 <button onClick={showDetails}>more</button>
+                                 <button onClick={() => get_url(url.id)}>
+                                    more
+                                 </button>
                               </td>
                            </tr>
                         ))
+                     ) : (
+                        <tr>
+                           <td colSpan="7" style={{ textAlign: "center" }}>
+                              No Urls Try Refreshing
+                           </td>
+                        </tr>
                      )}
                   </tbody>
                </Table>

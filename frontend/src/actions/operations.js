@@ -3,6 +3,10 @@ import {
    URL_SHORTENING_FAIL,
    GET_ALL_URLS_SUCCESS,
    GET_ALL_URLS_FAIL,
+   GET_URL_BY_ID_SUCCESS,
+   GET_URL_BY_ID_FAIL,
+   UPDATE_URL_SUCCESS,
+   UPDATE_URL_FAIL,
 } from "./types";
 import axios from "axios";
 
@@ -72,5 +76,62 @@ export const get_user_url = () => async (dispatch) => {
       }
    } else {
       dispatch({ type: GET_ALL_URLS_FAIL });
+   }
+};
+
+export const get_current_url = (id) => async (dispatch) => {
+   if (localStorage.getItem("access")) {
+      const config = {
+         headers: {
+            "content-type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("access")}`,
+         },
+      };
+      try {
+         const res = await axios.get(
+            `${process.env.REACT_APP_API_URL}/api/details/${id}/`,
+            config
+         );
+         console.log(res);
+         dispatch({
+            type: GET_URL_BY_ID_SUCCESS,
+            payload: res.data,
+         });
+      } catch (error) {
+         console.log(error);
+         dispatch({
+            type: GET_URL_BY_ID_FAIL,
+         });
+      }
+   } else {
+      dispatch({
+         type: GET_URL_BY_ID_FAIL,
+      });
+   }
+};
+
+export const update_url = (id, body) => async (dispatch) => {
+   if (localStorage.getItem("access")) {
+      const config = {
+         headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("access")}`,
+         },
+      };
+      console.log(config, body, id);
+      try {
+         const res = await axios.put(
+            `${process.env.REACT_APP_API_URL}/api/update/${id}/`,
+            body,
+            config
+         );
+         console.log(res);
+         dispatch({ type: UPDATE_URL_SUCCESS, message: res.statusText });
+      } catch (error) {
+         console.log(error);
+         dispatch({ type: UPDATE_URL_FAIL, message: error.response.data });
+      }
+   } else {
+      dispatch({ type: UPDATE_URL_FAIL });
    }
 };

@@ -98,7 +98,7 @@ export const Content = styled.div`
    }
    .title {
       margin-top: -20px;
-      margin-bottom: 5px;
+      margin-bottom: 15px;
       text-align: center;
    }
 `;

@@ -104,5 +104,9 @@ export const Refresh = styled.div`
       background: var(--light_purple);
       color: white;
       border-radius: 5px;
+      :hover {
+         width: 100px;
+         height: 55px;
+      }
    }
 `;
