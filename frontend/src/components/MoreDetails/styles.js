@@ -40,6 +40,12 @@ export const Content = styled.div`
    .details {
       p {
          border-bottom: 1px solid var(--light_purple-2);
+         a {
+            color: blue;
+            :visited {
+               color: skyblue;
+            }
+         }
       }
       .action {
          text-align: center;

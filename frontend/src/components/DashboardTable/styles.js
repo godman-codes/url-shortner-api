@@ -39,10 +39,18 @@ export const Table = styled.table`
       tr {
          td {
             border: 1px solid var(--light_purple-2);
-            overflow: hidden;
-            text-overflow: ellipsis;
+            /* overflow: hidden;
+            text-overflow: ellipsis; */
             text-align: start;
             white-space: nowrap;
+            a {
+               overflow: hidden;
+               text-overflow: ellipsis;
+               white-space: nowrap;
+               :hover {
+                  text-decoration: underline;
+               }
+            }
             :last-child {
                button {
                   color: var(--white);

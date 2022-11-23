@@ -3,6 +3,7 @@ import { Wrapper, Content } from "../BannerContainer/BannerContainer.styles";
 import { Table, Refresh } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRocket } from "@fortawesome/free-solid-svg-icons";
+import ErrorMessage from "../ErrorMessage";
 
 const DashboardTable = ({
    handler,
@@ -11,10 +12,12 @@ const DashboardTable = ({
    refresh,
    server_urls,
    showDetails,
+   message,
 }) => {
    const [formData, setFormData] = useState({
       original_link: "",
    });
+   const [showErr, setShowErr] = useState(false);
 
    // console.table(all_urls);
 
@@ -22,11 +25,13 @@ const DashboardTable = ({
    const onChange = (e) => {
       console.log(e.target.value);
       setFormData({ ...formData, [e.target.name]: e.target.value });
+      setShowErr(false);
    };
    const onSubmit = (e) => {
       e.preventDefault();
       console.log(original_link);
       handler(original_link);
+      setShowErr(true);
    };
    const copyAction = () => {
       // get the element
@@ -71,9 +76,23 @@ const DashboardTable = ({
                            <tr key={i}>
                               <td className="id">{i + 1}</td>
                               <td className="original_link">
-                                 {url.original_link}
+                                 <a
+                                    href={url.original_link}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                 >
+                                    {url.original_link}
+                                 </a>
                               </td>
-                              <td>{url.short_link}</td>
+                              <td>
+                                 <a
+                                    href={url.short_link}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                 >
+                                    {url.short_link}
+                                 </a>
+                              </td>
                               <td className="id">{url.visited}</td>
                               <td>
                                  <button onClick={() => get_url(url.id)}>
@@ -94,6 +113,16 @@ const DashboardTable = ({
                <Refresh>
                   <button onClick={refresh}>Refresh</button>
                </Refresh>
+               {showErr && (
+                  <ErrorMessage
+                     message={
+                        message === "Created"
+                           ? "Short Link created successfully"
+                           : ""
+                     }
+                     color="green"
+                  />
+               )}
                <form
                   className="form-container-form"
                   onSubmit={(e) => onSubmit(e)}
@@ -109,6 +138,13 @@ const DashboardTable = ({
                   <button type="submit">
                      Shorten <FontAwesomeIcon icon={faRocket} />
                   </button>
+                  {showErr && (
+                     <ErrorMessage
+                        message={
+                           message.original_link ? message.original_link[0] : ""
+                        }
+                     />
+                  )}
                </form>
                <h5>Last Url Created</h5>
                <ul className="most-recent-links">

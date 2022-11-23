@@ -57,9 +57,9 @@ const Dashboard = ({
       await update_url(body, id);
    };
 
-   // if (!isAuthenticated) {
-   //    return <Navigate to="/login" />;
-   // }
+   if (!isAuthenticated) {
+      return <Navigate to="/login" />;
+   }
    const action = async (body) => {
       await shortenUrl(body);
    };
@@ -74,6 +74,7 @@ const Dashboard = ({
             refresh={refresh}
             showDetails={openDetails}
             handler2={action2}
+            message={message}
          />
          {showDetails && (
             <MoreDetails

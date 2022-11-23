@@ -26,6 +26,7 @@ export default function (state = initialState, action) {
             return {
                ...state,
                all_urls: [payload],
+               signal_message: message,
             };
          } else {
             let man = JSON.parse(localStorage.getItem("all_urls"));
@@ -34,6 +35,7 @@ export default function (state = initialState, action) {
             return {
                ...state,
                all_urls: man,
+               signal_message: message,
             };
          }
       case GET_ALL_URLS_SUCCESS:
@@ -69,6 +71,7 @@ export default function (state = initialState, action) {
       case URL_SHORTENING_FAIL:
          return {
             ...state,
+            signal_message: message,
          };
       default:
          return state;

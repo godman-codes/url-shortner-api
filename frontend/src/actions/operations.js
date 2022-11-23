@@ -36,15 +36,17 @@ export const shortenUrl = (original_link) => async (dispatch) => {
          body,
          config
       );
-      console.log(res.data);
+      console.log(res);
       dispatch({
          type: URL_SHORTENING_SUCCESS,
          payload: res.data,
+         message: res.statusText,
       });
    } catch (error) {
       console.log(error);
       dispatch({
          type: URL_SHORTENING_FAIL,
+         message: error.response.data,
       });
    }
 };

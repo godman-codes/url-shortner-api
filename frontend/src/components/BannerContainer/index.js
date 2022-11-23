@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Wrapper, Content } from "./BannerContainer.styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRocket } from "@fortawesome/free-solid-svg-icons";
+import ErrorMessage from "../ErrorMessage";
 
-const BannerContainer = ({ handler, all_urls }) => {
+const BannerContainer = ({ handler, all_urls, message }) => {
    const [formData, setFormData] = useState({
       original_link: "",
    });
+   const [showErr, setShowErr] = useState(false);
 
    // console.table(all_urls);
 
@@ -15,11 +17,15 @@ const BannerContainer = ({ handler, all_urls }) => {
    const onChange = (e) => {
       console.log(e.target.value);
       setFormData({ ...formData, [e.target.name]: e.target.value });
+      if (showErr) {
+         setShowErr(false);
+      }
    };
    const onSubmit = (e) => {
       e.preventDefault();
       console.log(original_link);
       handler(original_link);
+      setShowErr(true);
    };
 
    const copyAction = () => {
@@ -45,6 +51,16 @@ const BannerContainer = ({ handler, all_urls }) => {
             </div>
             <div className="form-container">
                <h3 className="subtitle">Shorten URL Is Just Simple</h3>
+               {showErr && (
+                  <ErrorMessage
+                     message={
+                        message === "Created"
+                           ? "Short Link created successfully"
+                           : ""
+                     }
+                     color="green"
+                  />
+               )}
                <form
                   className="form-container-form"
                   onSubmit={(e) => onSubmit(e)}
@@ -60,6 +76,13 @@ const BannerContainer = ({ handler, all_urls }) => {
                   <button type="submit">
                      Shorten <FontAwesomeIcon icon={faRocket} />
                   </button>
+                  {showErr && (
+                     <ErrorMessage
+                        message={
+                           message.original_link ? message.original_link[0] : ""
+                        }
+                     />
+                  )}
                </form>
                <ul className="most-recent-links">
                   {all_urls.map((url, i) => (

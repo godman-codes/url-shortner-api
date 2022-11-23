@@ -13,7 +13,6 @@ const MoreDetails = ({ closeDetails, url, update_url, message }) => {
    //    console.log(url);
 
    const onChange = (e) => {
-      console.log(formData);
       if (showErr) {
          setShowErr(false);
       }
@@ -35,8 +34,22 @@ const MoreDetails = ({ closeDetails, url, update_url, message }) => {
             <h5 className="title">MoreDetails</h5>
             {url ? (
                <div className="details">
-                  <p>Original Link: {url.original_link}</p>
-                  <p>Short Link: {url.short_link}</p>
+                  <p>
+                     Original Link:{" "}
+                     <a
+                        href={url.original_link}
+                        target="_blank"
+                        rel="noreferrer"
+                     >
+                        {url.original_link}
+                     </a>
+                  </p>
+                  <p>
+                     Short Link:{" "}
+                     <a href={url.short_link} target="_blank" rel="noreferrer">
+                        {url.short_link}
+                     </a>
+                  </p>
                   <p>Visit: {url.visited}</p>
                   <p>Date Created: {url.date_created.slice(0, 10)}</p>
                   <p>Time Created: {url.date_created.slice(11, 19)}</p>
@@ -52,6 +65,14 @@ const MoreDetails = ({ closeDetails, url, update_url, message }) => {
                      <button>Delete</button>
                   </div>
                   <div className={showUpdate ? "update" : "vanish"}>
+                     {showErr && (
+                        <ErrorMessage
+                           message={
+                              message === "OK" ? "Url updated successfully" : ""
+                           }
+                           color="green"
+                        />
+                     )}
                      <form onSubmit={(e) => onSubmit(e, url.id)}>
                         <label htmlFor="original_link">New long Link</label>
                         <input
