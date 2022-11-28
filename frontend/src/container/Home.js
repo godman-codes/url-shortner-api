@@ -19,7 +19,7 @@ const Home = ({ shortenUrl, all_urls, message }) => {
       shortenUrl(body);
    };
    const focusFooter = () => {
-      console.log("caller");
+      // console.log("caller");
       footer.current.scrollIntoView({
          behavior: "smooth",
          block: "start",

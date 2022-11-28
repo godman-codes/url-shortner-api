@@ -7,6 +7,8 @@ import {
    GET_URL_BY_ID_FAIL,
    UPDATE_URL_SUCCESS,
    UPDATE_URL_FAIL,
+   DELETE_URL_SUCCESS,
+   DELETE_URL_FAIL,
 } from "./types";
 import axios from "axios";
 
@@ -135,5 +137,32 @@ export const update_url = (id, body) => async (dispatch) => {
       }
    } else {
       dispatch({ type: UPDATE_URL_FAIL });
+   }
+};
+
+export const delete_url = (id) => async (dispatch) => {
+   if (localStorage.getItem("access")) {
+      const config = {
+         headers: {
+            "content-type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("access")}`,
+         },
+      };
+      try {
+         const res = await axios.delete(
+            `${process.env.REACT_APP_API_URL}/api/delete/${id}`,
+            config
+         );
+         console.log(res);
+         dispatch({ type: DELETE_URL_SUCCESS, message: res.statusText });
+         alert("deleted successfully pls refresh to see changes");
+      } catch (error) {
+         console.log(error);
+         dispatch({ type: DELETE_URL_FAIL });
+         alert("unable to delete");
+      }
+   } else {
+      dispatch({ type: DELETE_URL_FAIL });
+      alert("unable to delete");
    }
 };

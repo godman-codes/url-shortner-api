@@ -7,6 +7,8 @@ import {
    GET_URL_BY_ID_FAIL,
    UPDATE_URL_SUCCESS,
    UPDATE_URL_FAIL,
+   DELETE_URL_SUCCESS,
+   DELETE_URL_FAIL,
 } from "../actions/types";
 
 const initialState = {
@@ -53,6 +55,17 @@ export default function (state = initialState, action) {
             ...state,
             signal_message: message,
          };
+      case DELETE_URL_SUCCESS:
+         return {
+            ...state,
+            signal_message: message,
+         };
+      case DELETE_URL_FAIL:
+         return {
+            ...state,
+            signal_message: message,
+         };
+
       case UPDATE_URL_FAIL:
          return {
             ...state,

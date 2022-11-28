@@ -47,6 +47,8 @@ export const Table = styled.table`
                overflow: hidden;
                text-overflow: ellipsis;
                white-space: nowrap;
+               margin-top: 8px;
+               margin-bottom: auto;
                :hover {
                   text-decoration: underline;
                }

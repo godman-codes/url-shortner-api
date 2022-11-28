@@ -9,6 +9,7 @@ import {
    shortenUrl,
    get_current_url,
    update_url,
+   delete_url,
 } from "../actions/operations";
 import Footer from "../components/Footer";
 import MoreDetails from "../components/MoreDetails";
@@ -23,6 +24,7 @@ const Dashboard = ({
    current_url,
    update_url,
    message,
+   delete_url,
 }) => {
    const footer = useRef(null);
    const [trigger, setTrigger] = useState(true);
@@ -56,6 +58,10 @@ const Dashboard = ({
    const action3 = async (body, id) => {
       await update_url(body, id);
    };
+   const action4 = async (id) => {
+      await delete_url(id);
+      setShowDetails(false);
+   };
 
    if (!isAuthenticated) {
       return <Navigate to="/login" />;
@@ -82,6 +88,7 @@ const Dashboard = ({
                url={current_url}
                update_url={action3}
                message={message}
+               delete_url_action={action4}
             />
          )}
          <Footer footerRef={footer} />
@@ -100,4 +107,5 @@ export default connect(mapStateToProps, {
    shortenUrl,
    get_current_url,
    update_url,
+   delete_url,
 })(Dashboard);

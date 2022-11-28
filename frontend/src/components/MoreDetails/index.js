@@ -4,7 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose, faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 import ErrorMessage from "../ErrorMessage";
 
-const MoreDetails = ({ closeDetails, url, update_url, message }) => {
+const MoreDetails = ({
+   closeDetails,
+   url,
+   update_url,
+   message,
+   delete_url_action,
+}) => {
    const [showUpdate, setShowUpdate] = useState(false);
    const [formData, setFormData] = useState({ original_link: "" });
    const [showErr, setShowErr] = useState(false);
@@ -62,7 +68,9 @@ const MoreDetails = ({ closeDetails, url, update_url, message }) => {
                         Update
                      </button>
                      <br />
-                     <button>Delete</button>
+                     <button onClick={() => delete_url_action(url.id)}>
+                        Delete
+                     </button>
                   </div>
                   <div className={showUpdate ? "update" : "vanish"}>
                      {showErr && (
